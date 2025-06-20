@@ -1,0 +1,2 @@
+# .hta
+Istalacion automática 
