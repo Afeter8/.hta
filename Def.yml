@@ -1,0 +1,20 @@
+name: Auto Deploy
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 * * * *"  # cada hora
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repo
+        uses: actions/checkout@v3
+
+      - name: Ejecutar defensa IA
+        run: python defensa.py
+
+      - name: Rotación automática
+        run: node sistema.js
