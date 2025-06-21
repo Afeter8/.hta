@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Fernando Guadalupe Mendez Espinoza">
+  <meta name="description" content="Instalador de seguridad IA StarTigo para uso exclusivo de Fernando Guadalupe Mendez Espinoza">
+  <title>Instalador IA StarTigo - Fernando</title>
+  <script>
+    // Verificación de identidad única
+    const userIdentity = "Fernando Guadalupe Mendez Espinoza";function verificarUsuario() {
+  const nombre = prompt("Ingrese su nombre completo para continuar:");
+  if (nombre !== userIdentity) {
+    alert("Acceso denegado. Solo autorizado para Fernando Guadalupe Mendez Espinoza.");
+    window.close();
+  } else {
+    alert("Verificación exitosa. Bienvenido, Fernando.");
+    iniciarInstalacion();
+  }
+}
+
+function iniciarInstalacion() {
+  const log = document.getElementById("log");
+  log.innerHTML += "<p>✅ Iniciando sistema de protección StarTigo...</p>";
+  log.innerHTML += "<p>🛡️ Ejecutando verificación de sistema operativo...</p>";
+  const esWindows = navigator.userAgent.includes("Windows");
+  if (!esWindows) {
+    log.innerHTML += "<p style='color:red;'>❌ Este sistema solo es compatible con Windows.</p>";
+    return;
+  }
+  log.innerHTML += "<p>✔️ Sistema operativo Windows verificado.</p>";
+
+  log.innerHTML += "<p>🔒 Activando cifrado y protección de red...</p>";
+  setTimeout(() => {
+    log.innerHTML += "<p>🔄 Instalando módulos de defensa IA...</p>";
+  }, 2000);
+
+  setTimeout(() => {
+    log.innerHTML += "<p>✅ Protección activa y en ejecución continua (bucle eterno).</p>";
+  }, 4000);
+}
+
+window.onload = verificarUsuario;
+
+  </script>
+  <style>
+    body {
+      background-color: #111;
+      color: #0f0;
+      font-family: monospace;
+      padding: 1rem;
+    }
+    #log {
+      background-color: #000;
+      border: 1px solid #0f0;
+      padding: 1rem;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Instalador StarTigo Antivirus</h1>
+  <div id="log">
+    <p>🕵️‍♂️ Verificando identidad...</p>
+  </div>
+</body>
+</html>
