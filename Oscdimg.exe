@@ -1,0 +1,1 @@
+oscdimg -m -o -u2 -udfver102 -bootdata:2#p0,e,betfs\boot\etfsboot.com#pEF,e,befi\microsoft\boot\efisys.bin C:\ISO_FGME C:\Windows_FGME.iso
