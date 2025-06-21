@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Star Tigo | Acceso Biométrico Seguro</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #00ffcc;
+      font-family: "Courier New", monospace;
+      padding: 2rem;
+    }
+    #status {
+      background: #111;
+      padding: 1rem;
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+    .locked {
+      color: red;
+    }
+    .unlocked {
+      color: lime;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔐 Sistema de Seguridad Star Tigo IA</h1>
+  <p><strong>Propietario:</strong> Fernando Guadalupe Mendez Espinoza</p>
+  <p><strong>Modo:</strong> Inmutable / IA-Controlado / Descentralizado</p>
+
+  <div id="status" class="locked">
+    Estado: Acceso Bloqueado – Verificando Biométrica...
+  </div>
+
+  <script>
+    // Sistema básico de validación biométrica simulada (para pruebas)
+    const biometriaAutorizada = "FernandoGuadalupeMendezEspinoza_HashVerified";
+
+    function verificarBiometria() {
+      // Simulación de verificación por IA
+      const biometria = prompt("Verifica la huella digital cifrada:");
+      if (biometria === biometriaAutorizada) {
+        document.getElementById("status").textContent = "✅ Acceso Autorizado – Sistema Star Tigo Antivirus Activo.";
+        document.getElementById("status").className = "unlocked";
+
+        // Activar módulo de defensa automático
+        console.log("Cargando Star Tigo Antivirus...");
+        // Aquí se podría conectar a módulos rotativos en .js, .json, .py
+
+      } else {
+        alert("⚠️ Acceso denegado. Se ha registrado el intento.");
+      }
+    }
+
+    // Ejecutar al cargar
+    window.onload = verificarBiometria;
+  </script>
+</body>
+</html>
