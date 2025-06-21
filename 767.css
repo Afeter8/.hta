@@ -1,0 +1,75 @@
+body {
+  background-color: #000; /* Fondo oscuro absoluto */
+  color: #0f0;             /* Texto verde tipo consola */
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  margin: 0;
+  padding: 2rem;
+  line-height: 1.5;
+}
+
+h1, h2 {
+  color: #0ff; /* Títulos cian brillante */
+  border-bottom: 2px solid #0f0;
+  padding-bottom: 0.2rem;
+  margin-top: 1rem;
+}
+
+.panel {
+  border: 1px solid #0f0;
+  background: #111;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 8px #0f0;
+  animation: blink-border 2s infinite alternate;
+}
+
+.status {
+  font-weight: bold;
+  color: #0f0;
+}
+
+.status-error {
+  color: #f00;
+  animation: blink-error 0.7s infinite;
+}
+
+.status-ok {
+  color: #0f0;
+  font-weight: bold;
+}
+
+.code-output {
+  background: #000;
+  border: 1px solid #0f0;
+  padding: 1rem;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  max-height: 300px;
+}
+
+button {
+  background-color: transparent;
+  color: #0f0;
+  border: 1px solid #0f0;
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #0f0;
+  color: #000;
+}
+
+@keyframes blink-error {
+  0%, 100% { color: #f00; }
+  50% { color: #fff; }
+}
+
+@keyframes blink-border {
+  from { box-shadow: 0 0 5px #0f0; }
+  to { box-shadow: 0 0 15px #0ff; }
+}
