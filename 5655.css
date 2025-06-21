@@ -1,0 +1,78 @@
+/* Sistema visual inmutable - Fernando Guadalupe Mendez Espinoza - Star Tigo */
+
+:root {
+  --fondo: #000000;
+  --texto: #00ff00;
+  --alerta: #ff0000;
+  --borde: #00ffff;
+  --fuente: 'Courier New', monospace;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--fuente);
+  background-color: var(--fondo);
+  color: var(--texto);
+  height: 100%;
+  overflow: hidden;
+}
+
+h1, h2, h3 {
+  color: var(--texto);
+  text-align: center;
+  border-bottom: 1px solid var(--borde);
+  padding-bottom: 0.5rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  border: 2px solid var(--borde);
+  margin: 1rem;
+  background-color: #111;
+  box-shadow: 0 0 10px var(--borde);
+  border-radius: 10px;
+}
+
+#log {
+  width: 90%;
+  height: 250px;
+  overflow-y: auto;
+  background: #111;
+  color: var(--texto);
+  border: 1px dashed var(--borde);
+  padding: 1rem;
+  font-size: 0.85rem;
+}
+
+.alerta {
+  color: var(--alerta);
+  font-weight: bold;
+  animation: parpadeo 1s infinite;
+}
+
+@keyframes parpadeo {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.boton {
+  background-color: var(--borde);
+  color: #000;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.boton:hover {
+  background-color: var(--alerta);
+  color: #fff;
+}
