@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reparación Inmutable - StarTigo IA</title>
+  <meta http-equiv="refresh" content="60"> <!-- Actualización automática -->
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #0f0;
+      font-family: 'Courier New', monospace;
+      padding: 1rem;
+    }
+    .panel {
+      border: 2px solid #0f0;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      background-color: #111;
+    }
+    h1, h2 {
+      color: #0ff;
+    }
+    .status {
+      color: #0f0;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>🛡️ Reparación Inmutable IA - StarTigo</h1>
+
+  <div class="panel">
+    <h2>Estado del Sistema</h2>
+    <p>Sistema operativo: <span class="status" id="os-status">Detectando...</span></p>
+    <p>Red: <span class="status" id="network-status">Analizando...</span></p>
+    <p>Integridad de archivos críticos: <span class="status" id="file-check">Verificando...</span></p>
+  </div>
+
+  <div class="panel">
+    <h2>Reparación Automática</h2>
+    <ul>
+      <li>🔁 Bucle de escaneo de integridad</li>
+      <li>🔐 Protección contra malware/virus</li>
+      <li>📶 Supervisión de red y radiofrecuencia</li>
+      <li>🧠 Enlace IA: <strong>ChatGPT / StarTigo</strong></li>
+      <li>📡 Activación de defensas en radiofrecuencia (433/868/915 MHz)</li>
+      <li>🔄 Autoejecución en arranque y reintentos infinitos</li>
+    </ul>
+  </div>
+
+  <div class="panel">
+    <h2>Comandos Ejecutados</h2>
+    <pre id="log-box">Esperando conexión con backend...</pre>
+  </div>
+
+  <script>
+    // Simulación de lectura dinámica
+    document.getElementById("os-status").innerText = navigator.platform;
+    document.getElementById("network-status").innerText = navigator.onLine ? "Conectado" : "Sin conexión";
+
+    // Simula logs (en integración real: WebSocket o fetch backend local/AI)
+    const logs = [
+      "✅ Verificando integridad SHA-256...",
+      "✅ Firewall activado en puertos críticos",
+      "🔄 Reiniciando servicios dañados...",
+      "🔒 Enlace seguro con StarTigo AI establecido.",
+      "📡 Canal de RF: Escaneo completado sin interferencias."
+    ];
+    document.getElementById("log-box").innerText = logs.join("\n");
+  </script>
+</body>
+</html>
