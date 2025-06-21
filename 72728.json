@@ -1,0 +1,8 @@
+{
+  "defensa": "activa",
+  "protocolo": ["TCP", "UDP", "DNS"],
+  "ip_control": "8.8.8.8",
+  "verificado_por": "IA Star Tigo",
+  "autorizado": "Fernando Guadalupe Méndez Espinoza",
+  "intervencion_humana": "bloqueada"
+}
