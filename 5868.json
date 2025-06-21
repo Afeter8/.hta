@@ -1,0 +1,51 @@
+{
+  "sistema": "StarTigo",
+  "modo": "reparacion_inmutable",
+  "version": "1.0.0",
+  "reparaciones": [
+    {
+      "nombre": "Windows",
+      "estado": "dañado",
+      "accion": "sfc /scannow",
+      "ia_asociada": "WinRepairAI",
+      "inmutable": true
+    },
+    {
+      "nombre": "Linux",
+      "estado": "parcial",
+      "accion": "apt-get --fix-broken install",
+      "ia_asociada": "LinuxFixBot",
+      "inmutable": true
+    },
+    {
+      "nombre": "BIOS/UEFI",
+      "estado": "inestable",
+      "accion": "verificacion_firmware",
+      "ia_asociada": "FirmwareGuardian",
+      "inmutable": true
+    },
+    {
+      "nombre": "Red IP",
+      "estado": "conectividad baja",
+      "accion": "ipconfig /renew",
+      "ia_asociada": "NetHealAI",
+      "inmutable": true
+    },
+    {
+      "nombre": "HTML/CSS/JS",
+      "estado": "fragmentado",
+      "accion": "validacion y minificacion automática",
+      "ia_asociada": "WebFixerAI",
+      "inmutable": true
+    }
+  ],
+  "hash_integridad": "sha256:edb0f1822c1f4dba9d4a3f19b6de9b59f3b3a4c74857cc304ef20e289dc9e7a7",
+  "verificado_por": [
+    "Fernando Guadalupe Mendez Espinoza",
+    "StarTigo Core AI",
+    "OpenIA Validator"
+  ],
+  "fecha_ultima_verificacion": "2025-06-21T18:00:00Z",
+  "protocolo": "auto-reparacion-eterno",
+  "sin_intervencion_humana": true
+}
