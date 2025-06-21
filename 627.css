@@ -1,0 +1,38 @@
+:root {
+  --fondo: #0a0a0a;
+  --texto: #00ff00;
+  --alerta: #ff3333;
+  --proteccion-activa: #33ff33;
+  --proteccion-verificando: #ffff33;
+}
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: monospace;
+  height: 100%;
+}
+
+.container { padding: 2rem; }
+#status {
+  padding: 1rem;
+  border: 2px solid var(--texto);
+  transition: background 0.5s;
+}
+#status.verificando { background: var(--proteccion-verificando); }
+#status.activo       { background: var(--proteccion-activa); }
+#status.alerta       { background: var(--alerta); animation: pulse 1.5s infinite; }
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 10px var(--alerta); }
+  50%      { box-shadow: 0 0 20px var(--alerta); }
+}
+#log::before {
+  content: '• ';
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 0; }
+  50%      { opacity: 1; }
+}
