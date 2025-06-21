@@ -1,0 +1,12 @@
+<script src="mcp-client.js"></script>
+<script>
+(async()=>{
+  const mcp = await connectMCP(); // conecta con agente local
+  const auth = await mcp.call('authenticateBiometric', encryptedVector);
+  if(!auth.ok) return alert('Acceso denegado');
+
+  // Inicializar defensa y visualización
+  await mcp.call('startDefenseLoop');
+  // Mostrar estado en el DOM
+})();
+</script>
