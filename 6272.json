@@ -1,0 +1,5 @@
+{
+  "owner": "Fernando Guadalupe Mendez Espinoza",
+  "protection": ["tcp", "udp", "dns", "firewall", "self_repair"],
+  "loop_interval": 60
+}
