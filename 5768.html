@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Star Tigo - Defensa Inmutable</title>
+  <link rel="stylesheet" href="inmutable.css" />
+  <script src="inmutable.js" defer></script>
+</head>
+<body onload="activarSistema()">
+
+  <div class="container">
+    <h1>Sistema Inmutable</h1>
+    <p class="alerta">⚠ Protección activa en bucle eterno ⚠</p>
+    <div id="log">Inicializando defensa...</div>
+    <button class="boton" onclick="activarManual()">Activar Manualmente</button>
+  </div>
+
+  <script type="application/json" id="config">
+    {
+      "propietario": "Fernando Guadalupe Mendez Espinoza",
+      "modo": "autónomo",
+      "ciclo": "eterno",
+      "verificacion": "firmas_digitales",
+      "defensa": "activa",
+      "version": "1.0"
+    }
+  </script>
+
+  <noscript>
+    <p style="color: red; font-weight: bold;">⚠ Activa JavaScript para ejecutar el sistema de defensa.</p>
+  </noscript>
+
+</body>
+</html>
