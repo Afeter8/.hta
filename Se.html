@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Star Tigo - Sistema Seguro Biométrico</title>
+<style>
+  body { background: #121212; color: #0f0; font-family: monospace; }
+  #status { margin-top: 20px; }
+  button { padding: 10px; background: #0f0; color: #000; border: none; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<h1>Star Tigo - Protección Biométrica Autonóma</h1>
+<p>Usuario: Fernando Guadalupe Méndez Espinoza</p>
+
+<button id="btnStart">Iniciar Sistema Seguro</button>
+
+<div id="status">Estado: Inactivo</div>
+
+<script>
+  // Simulación biométrica simple
+  const usuarioAutorizado = "Fernando Guadalupe Méndez Espinoza";
+
+  function validarBiometria() {
+    // Aquí puedes integrar API biométrica real
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve(true); // Simula autenticación exitosa
+      }, 1000);
+    });
+  }
+
+  async function iniciarSistema() {
+    document.getElementById('status').textContent = "Estado: Verificando biometría...";
+    const autorizado = await validarBiometria();
+
+    if (!autorizado) {
+      document.getElementById('status').textContent = "Acceso denegado.";
+      return;
+    }
+
+    document.getElementById('status').textContent = "Biometría verificada. Sistema iniciando...";
+
+    // Iniciar bucle eterno para protección y auto reparación
+    function bucleEterno() {
+      // Ejemplo: llamada a backend python para validación y reparación
+      fetch('/api/proteccion')  // Endpoint que debes crear en backend Python
+        .then(resp => resp.json())
+        .then(data => {
+          document.getElementById('status').textContent = `Sistema activo - Última revisión: ${new Date().toLocaleTimeString()}`;
+          setTimeout(bucleEterno, 30000); // Repetir cada 30 seg
+        })
+        .catch(() => {
+          document.getElementById('status').textContent = "Error en conexión con backend.";
+          setTimeout(bucleEterno, 30000);
+        });
+    }
+
+    bucleEterno();
+  }
+
+  document.getElementById('btnStart').addEventListener('click', iniciarSistema);
+</script>
+
+</body>
+</html>
