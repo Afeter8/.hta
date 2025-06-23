@@ -1,0 +1,20 @@
+/* protección.css - Estilo inmutable y seguro para defensa de sistemas */
+
+:root { --color-fondo: #0d0d0d; --color-texto: #00ffcc; --color-alerta: #ff0033; --fuente-principal: 'Courier New', Courier, monospace; }
+
+body { margin: 0; font-family: var(--fuente-principal); background-color: var(--color-fondo); color: var(--color-texto); line-height: 1.6; }
+
+h1, h2, h3 { color: var(--color-texto); text-shadow: 0 0 5px var(--color-alerta); }
+
+.container { padding: 2rem; border: 2px solid var(--color-alerta); border-radius: 10px; background-color: rgba(255, 0, 51, 0.1); }
+
+.alerta { background-color: var(--color-alerta); color: #fff; padding: 1rem; font-weight: bold; border-radius: 5px; box-shadow: 0 0 10px var(--color-alerta); }
+
+.seguro { background-color: #003300; color: #00ff00; padding: 1rem; border-left: 4px solid #00ff00; }
+
+button { background-color: var(--color-texto); color: var(--color-fondo); border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; font-weight: bold; box-shadow: 0 0 5px var(--color-texto); transition: background-color 0.3s ease; }
+
+button:hover { background-color: var(--color-alerta); color: #fff; }
+
+code { background-color: #222; padding: 0.2rem 0.5rem; border-radius: 5px; color: #0f0; }
+
