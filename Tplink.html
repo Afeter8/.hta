@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Defensa Inmutable | Star Tigo</title>
+  <link rel="stylesheet" href="defensa.css" />
+  <script src="defensa.js" defer></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Courier New', monospace;
+      background: #000;
+      color: #0f0;
+    }
+    .contenedor {
+      padding: 2rem;
+      text-align: center;
+    }
+    .bloque {
+      background: #111;
+      border: 2px solid #0f0;
+      padding: 1rem;
+      margin: 1rem auto;
+      max-width: 600px;
+      border-radius: 10px;
+    }
+    .protegido {
+      color: #0ff;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <h1>🛡️ Sistema de Protección Inmutable</h1>
+    <div class="bloque">
+      <p class="protegido">Star Tigo + Tigo Star</p>
+      <p>Estado del sistema: <span id="estado">Inmutable y Operativo</span></p>
+    </div>
+    <div class="bloque">
+      <p>Última verificación: <span id="verificacion">Pendiente...</span></p>
+      <button onclick="ejecutarVerificacion()">Ejecutar Verificación</button>
+    </div>
+    <div class="bloque">
+      <p>Defensa Activa en Bucle Eterno</p>
+      <p>Protección biométrica aplicada</p>
+    </div>
+  </div>
+</body>
+</html>
