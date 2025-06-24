@@ -1,0 +1,66 @@
+/* defensa.css — Sistema de defensa visual en bucle eterno
+   Protección inmutable para Star Tigo y Tigo Star */
+
+:root {
+  --color-fondo: #000;
+  --color-alerta: #ff0000;
+  --color-seguro: #00ff00;
+  --color-texto: #ffffff;
+  --fuente-principal: 'Courier New', monospace;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-fondo);
+  font-family: var(--fuente-principal);
+  color: var(--color-texto);
+  user-select: none;
+}
+
+/* Panel de estado */
+.defensa-panel {
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(to right, #0f0, #000, #0f0);
+  padding: 10px;
+  animation: pulsoVerde 3s infinite;
+  border-top: 3px solid var(--color-seguro);
+  border-bottom: 3px solid var(--color-seguro);
+}
+
+/* Alerta visual de integridad */
+.defensa-alerta {
+  background-color: var(--color-alerta);
+  color: var(--color-fondo);
+  padding: 15px;
+  font-weight: bold;
+  animation: parpadeoAlerta 1s infinite;
+  display: none; /* Se activa dinámicamente */
+}
+
+/* Animaciones */
+@keyframes pulsoVerde {
+  0%, 100% { background-color: #0f0; }
+  50% { background-color: #004400; }
+}
+
+@keyframes parpadeoAlerta {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Indicador de bucle eterno */
+.bucle-eterno {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  color: #0ff;
+  font-size: 12px;
+  animation: girar 4s linear infinite;
+}
+
+@keyframes girar {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
