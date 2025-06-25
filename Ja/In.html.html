@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>StarTigo Sistema Inmutable</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      background-color: #000;
+      color: #0f0;
+      padding: 1rem;
+    }
+    .seguro {
+      user-select: none;
+      pointer-events: none;
+    }
+    .card {
+      background: #111;
+      border: 2px solid #0f0;
+      border-radius: 1rem;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    .log {
+      font-size: 0.8rem;
+      color: #888;
+      height: 150px;
+      overflow-y: auto;
+      background: #050505;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧠 StarTigo IA - Sistema Inmutable y Seguro</h1>
+
+  <div class="card">
+    <p>Estado: <span id="estado">Inicializando...</span></p>
+  </div>
+
+  <div class="card">
+    <h2>🔐 Verificación de Integridad</h2>
+    <p>Hash esperado: <code id="hashEsperado"></code></p>
+    <p>Hash actual: <code id="hashActual"></code></p>
+    <p>Resultado: <strong id="resultado"></strong></p>
+  </div>
+
+  <div class="card">
+    <h2>📜 Registro de Ciclos</h2>
+    <div class="log" id="logCiclos"></div>
+  </div>
+
+  <script>
+    const hashEsperado = "hashFijo123456789abcdef..."; // Simulado
+    document.getElementById("hashEsperado").textContent = hashEsperado;
+
+    function calcularHashInterno() {
+      const content = document.documentElement.innerHTML;
+      let hash = 0;
+      for (let i = 0; i < content.length; i++) {
+        const char = content.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash |= 0;
+      }
+      return Math.abs(hash).toString(16);
+    }
+
+    function verificarIntegridad() {
+      const actual = calcularHashInterno();
+      document.getElementById("hashActual").textContent = actual;
+      const resultado = (actual === hashEsperado) ? "✅ INTACTO" : "❌ ALTERADO";
+      document.getElementById("resultado").textContent = resultado;
+      if (resultado.includes("❌")) {
+        document.getElementById("estado").textContent = "⚠️ Código Alterado";
+      } else {
+        document.getElementById("estado").textContent = "🟢 Sistema en ejecución segura";
+      }
+    }
+
+    function registrarCiclo() {
+      const log = document.getElementById("logCiclos");
+      const time = new Date().toLocaleTimeString();
+      log.innerHTML = `[${time}] ✅ Verificación completada<br>` + log.innerHTML;
+    }
+
+    function bucleEterno() {
+      verificarIntegridad();
+      registrarCiclo();
+      setTimeout(bucleEterno, 5000); // Cada 5 segundos
+    }
+
+    bucleEterno();
+  </script>
+</body>
+</html>
