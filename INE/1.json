@@ -1,0 +1,6 @@
+{
+  "nivel_amarillo": ["bloqueo IP", "auditoría", "copias inmutables"],
+  "nivel_naranja": ["análisis forense", "reconexión cifrada", "migración IA"],
+  "nivel_rojo": ["desconexión física", "activación honeypot global", "alerta diplomática"],
+  "nivel_negro": ["aislamiento total", "destrucción lógica del nodo", "firma blockchain final"]
+}
