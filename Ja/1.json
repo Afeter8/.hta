@@ -1,0 +1,61 @@
+{
+  "StarTigo": {
+    "proyecto": "IA Autónoma Unificada",
+    "autor": "Fernando Guadalupe Mendez Espinoza",
+    "version": "1.0.0",
+    "ultimaActualizacion": "2025-06-25",
+    "sistemas": {
+      "seguridad": {
+        "hash": "sha256-abc123",
+        "firmaDigital": "firmadigitalXYZ...",
+        "nivelesAcceso": ["root", "admin", "usuario"],
+        "proteccionTokenPor": ["letra", "numero", "signo", "emoji"],
+        "estado": "activo"
+      },
+      "chatgpt": {
+        "modelo": "GPT-4o",
+        "habilitado": true,
+        "respuestasContextuales": true,
+        "restricciones": ["sin estafas", "sin código malicioso"]
+      },
+      "comunicacion": {
+        "wifi": true,
+        "bluetooth": true,
+        "redesMoviles": ["2G", "3G", "4G", "5G"],
+        "radioFM": true,
+        "estado": "conectado"
+      },
+      "actualizaciones": {
+        "fuente": "IPFS/Ethereum",
+        "modo": "autónomo",
+        "frecuencia": "cada 24 horas",
+        "verificacionBlockchain": true
+      },
+      "auditoria": {
+        "auditoriaAutomatica": true,
+        "registroBlockchain": true,
+        "eventos": [
+          "inicio",
+          "modificacion",
+          "acceso",
+          "error"
+        ]
+      },
+      "interfaces": {
+        "android": true,
+        "windows": true,
+        "html_universal": true,
+        "modoNiños": true,
+        "modoAdultos": true
+      }
+    },
+    "proyectosVinculados": [
+      "sistema-defensa-inmutable",
+      "sistema-radio-frecuencia",
+      "sistema-pagos-inteligentes",
+      "navegador-star-tigo",
+      "verificador-firma-ia",
+      "protector-codigo-autonomo"
+    ]
+  }
+}
