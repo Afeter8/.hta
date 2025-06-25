@@ -1,0 +1,8 @@
+{
+  "México": {
+    "lenguas_indigenas": ["Náhuatl", "Mixteco", "Zapoteco"],
+    "protección_legislativa": true,
+    "derechos_digitales": true,
+    "firmas_digitales_requeridas": true
+  }
+}
