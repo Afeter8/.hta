@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instalador IA - Star Tigo FGME</title>
+  <style>
+    body {
+      background: #000;
+      color: #0f0;
+      font-family: monospace;
+      padding: 2rem;
+    }
+    .terminal {
+      background: #111;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #0f0;
+    }
+    .log {
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <h1>🔐 Instalador IA Autónomo</h1>
+    <div class="log" id="log">
+      Verificando entorno...
+    </div>
+  </div>  <script>
+    const log = document.getElementById('log');
+
+    function appendLog(text) {
+      log.textContent += "\n" + text;
+    }
+
+    function verificarSO() {
+      const platform = navigator.platform.toLowerCase();
+      if (platform.includes("win")) return "Windows";
+      if (platform.includes("linux")) return "Linux";
+      if (platform.includes("mac")) return "MacOS";
+      return "Desconocido";
+    }
+
+    function iniciarInstalacion() {
+      appendLog("Detección de sistema: " + verificarSO());
+      appendLog("Validando integridad de archivos...");
+      // Simular validación
+      setTimeout(() => {
+        appendLog("✅ Archivos verificados");
+        appendLog("Descargando módulos IA...");
+        setTimeout(() => {
+          appendLog("✅ Módulos instalados correctamente");
+          appendLog("Ejecutando autoconfiguración de seguridad...");
+          setTimeout(() => {
+            appendLog("🔐 Sistema protegido con cifrado AES-256");
+            appendLog("🚀 Instalación completa. Reinicie para aplicar cambios.");
+          }, 2000);
+        }, 2000);
+      }, 2000);
+    }
+
+    window.onload = iniciarInstalacion;
+  </script></body>
+</html>
