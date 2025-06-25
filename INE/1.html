@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Protección Identidad IA - StarTigo</title>
+  <meta charset="UTF-8" />
+</head>
+<body style="background:#111; color:#0f0;">
+  <h1>🧠 Identidad protegida por IA</h1>
+  <p>Fernando Guadalupe Méndez Espinoza</p>
+  <p>Estado: <span id="estado">Verificando...</span></p>
+  <script>
+    setInterval(() => {
+      fetch("ine_digital_encriptada.json")
+        .then(r => r.json())
+        .then(d => {
+          if (!d.nombre.includes("Fernando")) {
+            document.body.innerHTML = "<h1>⚠️ Identidad falsa detectada</h1>";
+          } else {
+            document.getElementById("estado").textContent = "✅ Verificado";
+          }
+        });
+    }, 10000);
+  </script>
+</body>
+</html>
