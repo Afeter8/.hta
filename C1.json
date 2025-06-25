@@ -1,0 +1,16 @@
+{
+  "México": {
+    "idioma": "es",
+    "estilo_color": "#006847",
+    "emojis_culturales": ["🇲🇽", "🫔", "🪅"],
+    "palabras_bloqueadas": ["gringo", "conquista"],
+    "extensiones": [".html", ".css", ".js", ".json", ".py"]
+  },
+  "Japón": {
+    "idioma": "ja",
+    "estilo_color": "#bc002d",
+    "emojis_culturales": ["🇯🇵", "🍣", "🎌"],
+    "palabras_bloqueadas": ["nuke", "war"],
+    "extensiones": [".html", ".css", ".js", ".json"]
+  }
+}
