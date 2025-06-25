@@ -1,0 +1,9 @@
+{
+  "pais": "México",
+  "nivel_alerta": "verde",
+  "protocolos_autorizados": ["ciberdefensa", "bloqueo IP", "análisis forense"],
+  "defensa_civil": true,
+  "satelital": false,
+  "firmado_por": "IA StarTigo Defensa",
+  "hash_inmutable": "sha256:mx1234...xyz"
+}
