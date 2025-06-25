@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>StarTigo Unified AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="stylesheet" href="StarTigoUnifiedStyles.css" />
+  <script src="StarTigoCore.js" defer></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #111;
+      color: #0f0;
+      padding: 1rem;
+    }
+    .modulo {
+      background: #222;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 10px #0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧠 StarTigo Sistema Unificado HTML</h1>
+
+  <div class="modulo" id="mod-seguridad">
+    <h2>🔐 Seguridad del Código</h2>
+    <p>Protección activa por token: letra, número, signo, emoji.</p>
+  </div>
+
+  <div class="modulo" id="mod-chatgpt">
+    <h2>🤖 ChatGPT Integrado</h2>
+    <input type="text" id="inputGPT" placeholder="Escribe algo..." />
+    <button onclick="enviarGPT()">Enviar</button>
+    <p id="respuestaGPT"></p>
+  </div>
+
+  <div class="modulo" id="mod-comunicacion">
+    <h2>📡 Comunicación</h2>
+    <p>Conexiones: WiFi, Bluetooth, FM, Red Móvil</p>
+  </div>
+
+  <div class="modulo" id="mod-json">
+    <h2>📂 JSON Central</h2>
+    <pre id="jsonOutput"></pre>
+  </div>
+
+  <script>
+    // Simulación de procesamiento ChatGPT
+    function enviarGPT() {
+      const entrada = document.getElementById("inputGPT").value;
+      const salida = `[ChatGPT]: Respondiendo a "${entrada}"...`;
+      document.getElementById("respuestaGPT").innerText = salida;
+    }
+
+    // Simulación de carga de JSON combinado
+    const sistemaJSON = {
+      sistema: "StarTigo",
+      autor: "Fernando Guadalupe Mendez Espinoza",
+      chatgpt: true,
+      seguridad: true,
+      version: "1.0.0"
+    };
+    document.getElementById("jsonOutput").innerText = JSON.stringify(sistemaJSON, null, 2);
+  </script>
+
+</body>
+</html>
