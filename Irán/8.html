@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Honeypot - Actividad Maliciosa Detectada</title>
+</head>
+<body style="background:black; color:red; font-family:monospace;">
+  <h1>⚠️ Sistema falsificado detectado</h1>
+  <p>IP y actividad registrada por IA autónoma de StarTigo.</p>
+  <script>
+    fetch("https://tigo.guardian.startrap/registro", {
+      method: "POST",
+      body: JSON.stringify({ agente: navigator.userAgent, fecha: Date.now() })
+    });
+  </script>
+</body>
+</html>
