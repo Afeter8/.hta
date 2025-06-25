@@ -1,0 +1,22 @@
+{
+  "es": {
+    "nombre": "Español",
+    "regiones": ["México", "Argentina", "España", "Perú"],
+    "protección": true
+  },
+  "en": {
+    "nombre": "English",
+    "regiones": ["USA", "UK", "Nigeria", "India"],
+    "protección": true
+  },
+  "ar": {
+    "nombre": "العربية",
+    "regiones": ["Egipto", "Arabia Saudita", "Marruecos"],
+    "protección": true
+  },
+  "zh": {
+    "nombre": "中文",
+    "regiones": ["China", "Taiwán", "Malasia"],
+    "protección": true
+  }
+}
