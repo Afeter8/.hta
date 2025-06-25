@@ -1,0 +1,6 @@
+{
+  "alteracion_identidad": ["cifrado_global", "respaldo IPFS", "alerta global"],
+  "corrupcion_codigo": ["rollback automático", "recompilar desde hash"],
+  "desaparicion_fisica": ["encriptar todo", "aislar nodos", "publicar huella digital"],
+  "hackeo": ["autodestruir código malicioso", "bloquear IP atacante", "denuncia descentralizada"]
+}
