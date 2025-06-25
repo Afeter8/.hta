@@ -1,0 +1,10 @@
+setInterval(() => {
+  fetch("derechos_humanos.json")
+    .then(r => r.json())
+    .then(data => {
+      if (!data.inmutable || !data.firmado_por_IA) {
+        document.body.innerHTML = "<h1>⚠️ Sistema vulnerado. Bloqueando región.</h1>";
+        throw new Error("Sistema comprometido.");
+      }
+    });
+}, 10000);
