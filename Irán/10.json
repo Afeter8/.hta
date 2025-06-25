@@ -1,0 +1,8 @@
+{
+  "pais": "México",
+  "idioma": "español",
+  "leyes_protegidas": ["Constitución Mexicana", "Ley de Datos Personales"],
+  "derechos_civiles": ["Libre expresión", "Privacidad", "Acceso a información"],
+  "cultura": ["Lenguas indígenas", "Día de muertos", "Diversidad religiosa"],
+  "conexion_autorizada": true
+}
