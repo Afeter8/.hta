@@ -1,0 +1,16 @@
+{
+  "proyecto": "Protección Total",
+  "version": "1.0.0",
+  "autor": "StarTigo",
+  "verifica_letra_case_sensitive": true,
+  "proteccion_activada": true,
+  "elementos_protegidos": [
+    "Fernando Guadalupe Mendez Espinoza",
+    "Tigo Star",
+    "StarTigo",
+    "ChatGPT",
+    "OpenAI"
+  ],
+  "ultimo_ciclo": "auto",
+  "hash": "123456hashInmutable..."
+}
