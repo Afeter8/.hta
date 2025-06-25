@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>🌍 ShieldNet - Defensa Global IA</title>
+</head>
+<body style="background:#000; color:#0f0; font-family:monospace;">
+  <h1>🛡️ StarTigo IA Defensa Global</h1>
+  <p>Estado actual:</p>
+  <ul id="estados"></ul>
+  <script>
+    const paises = ["mexico_defensa.json", "usa_defensa.json", "iran_defensa.json"];
+    setInterval(() => {
+      document.getElementById("estados").innerHTML = "";
+      paises.forEach(p => {
+        fetch("paises_defensa/" + p).then(r => r.json()).then(data => {
+          let li = document.createElement("li");
+          li.textContent = `${data.pais}: ${data.nivel_alerta}`;
+          document.getElementById("estados").appendChild(li);
+        });
+      });
+    }, 10000);
+  </script>
+</body>
+</html>
