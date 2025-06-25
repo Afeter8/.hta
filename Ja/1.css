@@ -1,0 +1,116 @@
+/* ==============================
+   StarTigo - Estilos Combinados
+   Autor: Fernando Guadalupe Mendez Espinoza
+   Integración: ChatGPT
+   Última versión: 2025-06-25
+============================== */
+
+/* 1. Reset general para todos los navegadores */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Variables universales */
+:root {
+  --color-fondo: #111;
+  --color-texto: #0f0;
+  --color-alerta: #ff0000;
+  --fuente-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* Modo niño / adulto */
+  --modo-niño: #00f;
+  --modo-adulto: #090;
+  --modo-radio: #ffd700;
+  --emoji-visible: block;
+}
+
+/* 3. Cuerpo del sistema */
+body {
+  font-family: var(--fuente-base);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  padding: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+/* 4. Componentes del sistema IA */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem;
+}
+
+.card {
+  background: #222;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+}
+
+.alerta {
+  background-color: var(--color-alerta);
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+}
+
+/* 5. Protección visual */
+.protegido {
+  user-select: none;
+  pointer-events: none;
+  filter: blur(5px);
+}
+
+/* 6. Emojis controlados por IA */
+.emoji {
+  display: var(--emoji-visible);
+  font-size: 1.5rem;
+}
+
+/* 7. Interfaces por sistema */
+.android {
+  border: 2px solid #3ddc84;
+}
+
+.windows {
+  border: 2px solid #00adef;
+}
+
+.radio-fm {
+  border: 2px solid var(--modo-radio);
+}
+
+/* 8. Modo niño / adulto */
+.modo-niño {
+  background-color: var(--modo-niño);
+  color: #fff;
+}
+
+.modo-adulto {
+  background-color: var(--modo-adulto);
+  color: #fff;
+}
+
+/* 9. Animaciones ligeras para IA */
+@keyframes pulso {
+  0% { box-shadow: 0 0 5px #0f0; }
+  50% { box-shadow: 0 0 20px #0f0; }
+  100% { box-shadow: 0 0 5px #0f0; }
+}
+
+.ia-activa {
+  animation: pulso 2s infinite;
+}
+
+/* 10. Compatibilidad visual multidispositivo */
+.responsive {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
