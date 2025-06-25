@@ -1,0 +1,108 @@
+/* StarTigo - CSS Inmutable Unificado
+   Autor: Fernando Guadalupe Méndez Espinoza
+   Integración: ChatGPT IA
+   Seguridad Visual Avanzada + Bucles Eternos
+   Fecha: 2025-06-25
+*/
+
+/* 🛡️ Seguridad visual universal */
+* {
+  user-select: none !important;
+  pointer-events: none !important;
+  box-sizing: border-box;
+  transition: all 0.4s ease-in-out;
+}
+
+/* 🌑 Fondo seguro y colores de IA */
+:root {
+  --color-fondo: #000;
+  --color-texto: #0f0;
+  --color-alerta: #f00;
+  --color-radio: #ffd700;
+  --color-niño: #00f;
+  --color-adulto: #090;
+  --color-inmutable: #333;
+  --fuente-segura: 'Courier New', monospace;
+}
+
+/* 🧠 Estilo global */
+body {
+  font-family: var(--fuente-segura);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  padding: 1rem;
+}
+
+/* 📦 Contenedores inmutables */
+.card {
+  background: var(--color-inmutable);
+  border: 2px solid var(--color-texto);
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+}
+
+/* 🔁 Bucles visuales automáticos */
+@keyframes bucle-eterno {
+  0% { box-shadow: 0 0 5px var(--color-texto); }
+  50% { box-shadow: 0 0 25px var(--color-radio); }
+  100% { box-shadow: 0 0 5px var(--color-texto); }
+}
+
+.bucle {
+  animation: bucle-eterno 4s infinite;
+}
+
+/* 🧩 Sistema modular por tipo */
+.modo-radio { border-color: var(--color-radio); }
+.modo-niño  { background: var(--color-niño); color: #fff; }
+.modo-adulto{ background: var(--color-adulto); color: #fff; }
+
+/* 🔐 Elementos protegidos */
+.protegido {
+  filter: blur(2px);
+  background: #111;
+  border: 1px dashed red;
+  pointer-events: none;
+}
+
+/* 📟 Consolas seguras */
+.consola {
+  background: #050505;
+  border: 1px solid #0f0;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  overflow-y: auto;
+  max-height: 200px;
+  font-family: var(--fuente-segura);
+}
+
+/* 🌐 Modo inmutable externo (alerta visual) */
+.alerta-inmutable {
+  background: var(--color-alerta);
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  animation: parpadeo 1s infinite alternate;
+}
+
+@keyframes parpadeo {
+  0%   { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+/* 📱 Responsivo y adaptable */
+.responsive {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 🎯 Elementos ocultos con emoji */
+.emoji-clave {
+  visibility: hidden;
+  font-size: 0.01rem;
+}
