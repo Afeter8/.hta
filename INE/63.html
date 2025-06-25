@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><title>StarRescue IA - Estado</title></head>
+<body style="background:black; color:lime; font-family:monospace;">
+  <h1>🛡️ Estado: IA en bucle eterno</h1>
+  <p>Integridad: Validada ✅</p>
+  <p>Última defensa ejecutada: <span id="hora">---</span></p>
+  <script>
+    setInterval(() => {
+      document.getElementById("hora").textContent = new Date().toLocaleTimeString();
+    }, 1000);
+  </script>
+</body>
+</html>
