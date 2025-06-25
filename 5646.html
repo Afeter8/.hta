@@ -1,0 +1,871 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="shortcut icon" href="favicon.ico"/>
+<link type="text/css" href="css/widget.css" rel="stylesheet" />
+<link type="text/css" href="themes/gray/css/style.css" rel="stylesheet" />
+<link type="text/css" href="themes/gray/css/datepicker.css" rel="stylesheet"/>
+<title>Star Tigo | Defensa Inmutable</title>
+
+<style>
+  :root {
+    --primary: #0c1e30;
+    --secondary: #0f2b46;
+    --accent: #2e8bc0;
+    --accent-light: #4fc3f7;
+    --success: #4caf50;
+    --warning: #ff9800;
+    --danger: #ff5252;
+    --text: #e0f7fa;
+    --card-bg: rgba(20, 45, 70, 0.7);
+    --header-bg: rgba(10, 30, 50, 0.9);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background: linear-gradient(135deg, var(--primary), #0a2640);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 20px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  header {
+    text-align: center;
+    padding: 25px 0;
+    margin-bottom: 25px;
+    background: var(--header-bg);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-bottom: 3px solid var(--accent);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent));
+  }
+  
+  header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background: linear-gradient(90deg, var(--accent-light), white);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 10px rgba(46, 139, 192, 0.4);
+  }
+  
+  header h2 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--accent-light);
+    margin-bottom: 15px;
+  }
+  
+  .status-banner {
+    background: rgba(20, 45, 70, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid rgba(46, 139, 192, 0.3);
+  }
+  
+  .status-banner .status-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--success);
+    box-shadow: 0 0 10px var(--success);
+  }
+  
+  .dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+  }
+  
+  .card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(46, 139, 192, 0.3);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    border-color: var(--accent);
+  }
+  
+  .card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--accent);
+    color: var(--accent-light);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+  }
+  
+  .metric-card {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid rgba(46, 139, 192, 0.2);
+  }
+  
+  .metric-card .value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 10px 0;
+    background: linear-gradient(90deg, var(--accent-light), white);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .metric-card .label {
+    font-size: 0.9rem;
+    color: #aaa;
+  }
+  
+  .chart-container {
+    height: 250px;
+    margin-top: 20px;
+    position: relative;
+  }
+  
+  button {
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(46, 139, 192, 0.4);
+    margin-top: 15px;
+  }
+  
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46, 139, 192, 0.6);
+  }
+  
+  #log-hashes {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 15px;
+    font-family: 'Consolas', monospace;
+    font-size: 0.9rem;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 20px;
+    color: var(--text);
+    border: 1px solid rgba(46, 139, 192, 0.2);
+  }
+  
+  .log-entry {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    gap: 15px;
+  }
+  
+  .log-time {
+    color: var(--accent-light);
+    font-size: 0.85rem;
+    min-width: 80px;
+  }
+  
+  .log-info {
+    color: #4fc3f7;
+  }
+  
+  .log-success {
+    color: var(--success);
+  }
+  
+  .log-warning {
+    color: var(--warning);
+  }
+  
+  .log-error {
+    color: var(--danger);
+    font-weight: 600;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 25px;
+    background: var(--header-bg);
+    border-radius: 15px;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: var(--accent-light);
+    border-top: 1px solid var(--accent);
+  }
+  
+  .security-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .security-item {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid rgba(46, 139, 192, 0.2);
+  }
+  
+  .security-item i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--accent);
+  }
+  
+  .security-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 5px;
+  }
+  
+  .status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  
+  .dot-online {
+    background: var(--success);
+    box-shadow: 0 0 8px var(--success);
+  }
+  
+  .dot-offline {
+    background: var(--danger);
+    box-shadow: 0 0 8px var(--danger);
+  }
+  
+  .dot-warning {
+    background: var(--warning);
+    box-shadow: 0 0 8px var(--warning);
+  }
+  
+  @keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+  }
+  
+  .pulse {
+    animation: pulse 1.5s infinite;
+  }
+  
+  .connection-result {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .connection-success {
+    background: rgba(76, 175, 80, 0.15);
+    border: 1px solid var(--success);
+  }
+  
+  .connection-error {
+    background: rgba(255, 107, 107, 0.15);
+    border: 1px solid var(--danger);
+  }
+  
+  .spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .alert-banner {
+    background: rgba(255, 152, 0, 0.2);
+    border: 1px solid var(--warning);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    animation: pulse 2s infinite;
+  }
+  
+  .alert-banner i {
+    color: var(--warning);
+    font-size: 1.5rem;
+  }
+  
+  .critical {
+    background: rgba(255, 82, 82, 0.2);
+    border-color: var(--danger);
+    animation: pulse 0.8s infinite;
+  }
+  
+  .critical i {
+    color: var(--danger);
+  }
+  
+  .system-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #aaa;
+  }
+  
+  .counter {
+    font-weight: bold;
+    color: var(--accent-light);
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard {
+      grid-template-columns: 1fr;
+    }
+    
+    .security-grid, .metric-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    header h1 {
+      font-size: 2rem;
+    }
+  }
+  
+  /* Integración con estilos existentes */
+  #index-view-container {
+    display: none;
+  }
+  
+  .body-wrap {
+    display: block !important;
+  }
+  
+  #module-container {
+    display: none;
+  }
+</style>
+
+<noscript>
+  <meta http-equiv="refresh" content="0; url=error.html"/>
+</noscript>
+</head>
+
+<body>
+<div class="container">
+  <header>
+    <h1><i class="fas fa-shield-alt"></i> Sistema de Defensa Star Tigo</h1>
+    <h2>Fernando Guadalupe Mendez Espinoza</h2>
+    
+    <div class="status-banner">
+      <div class="status-dot pulse"></div>
+      <span>SISTEMA EN OPERACIÓN - MONITOREO ACTIVO 24/7</span>
+      <div class="system-info">
+        <span>Última actualización: <span id="last-update" class="counter">00:00:00</span></span>
+        <span>Ciclos: <span id="cycle-counter" class="counter">0</span></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard">
+    <div class="card">
+      <h3><i class="fas fa-server"></i> Estado del Sistema</h3>
+      
+      <div class="metric-grid">
+        <div class="metric-card">
+          <i class="fas fa-microchip"></i>
+          <div class="value" id="cpu-usage">12%</div>
+          <div class="label">Uso de CPU</div>
+        </div>
+        
+        <div class="metric-card">
+          <i class="fas fa-memory"></i>
+          <div class="value" id="ram-usage">24%</div>
+          <div class="label">Uso de Memoria</div>
+        </div>
+        
+        <div class="metric-card">
+          <i class="fas fa-network-wired"></i>
+          <div class="value" id="network-load">1.2 Gb/s</div>
+          <div class="label">Tráfico de Red</div>
+        </div>
+        
+        <div class="metric-card">
+          <i class="fas fa-temperature-high"></i>
+          <div class="value" id="system-temp">42°C</div>
+          <div class="label">Temperatura</div>
+        </div>
+      </div>
+      
+      <div class="alert-banner">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>Advertencia: Rotación de claves pendiente en <span id="key-rotation" class="counter">03:15:22</span></div>
+      </div>
+      
+      <div class="chart-container">
+        <canvas id="performance-chart"></canvas>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><i class="fas fa-wifi"></i> Seguridad de Red</h3>
+      
+      <div class="security-grid">
+        <div class="security-item">
+          <i class="fas fa-lock"></i>
+          <h4>Encriptación</h4>
+          <p>AES-256 activado</p>
+          <div class="security-status">
+            <div class="status-dot dot-online"></div>
+            <span>Operativo</span>
+          </div>
+        </div>
+        
+        <div class="security-item">
+          <i class="fas fa-firewall"></i>
+          <h4>Cortafuegos</h4>
+          <p>Nivel máximo</p>
+          <div class="security-status">
+            <div class="status-dot dot-online"></div>
+            <span>Operativo</span>
+          </div>
+        </div>
+        
+        <div class="security-item">
+          <i class="fas fa-shield-alt"></i>
+          <h4>Protección DDoS</h4>
+          <p>Mitigación activa</p>
+          <div class="security-status">
+            <div class="status-dot dot-warning"></div>
+            <span>Monitoreando</span>
+          </div>
+        </div>
+      </div>
+      
+      <div id="resultado-conexion" class="connection-result connection-success">
+        <i class="fas fa-check-circle"></i>
+        <div>
+          <div>Conexión estable y segura</div>
+          <div style="font-size: 0.9rem; margin-top: 5px;">Latencia: <span id="network-latency">24ms</span> | Estabilidad: <span id="network-stability">99.8%</span></div>
+        </div>
+      </div>
+      
+      <button onclick="runManualSecurityCheck()">
+        <i class="fas fa-sync-alt"></i> Ejecutar Escaneo Completo
+      </button>
+      
+      <div class="chart-container">
+        <canvas id="threat-chart"></canvas>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><i class="fas fa-brain"></i> Inteligencia Artificial</h3>
+      
+      <div class="metric-grid">
+        <div class="metric-card">
+          <i class="fas fa-robot"></i>
+          <div class="value" id="ai-status">Activo</div>
+          <div class="label">Estado IA</div>
+        </div>
+        
+        <div class="metric-card">
+          <i class="fas fa-eye"></i>
+          <div class="value" id="threat-level">Bajo</div>
+          <div class="label">Nivel de Amenaza</div>
+        </div>
+        
+        <div class="metric-card">
+          <i class="fas fa-bolt"></i>
+          <div class="value" id="ai-speed">0.02ms</div>
+          <div class="label">Tiempo Respuesta</div>
+        </div>
+        
+        <div class="metric-card">
+          <i class="fas fa-database"></i>
+          <div class="value" id="data-processed">42TB</div>
+          <div class="label">Datos Analizados</div>
+        </div>
+      </div>
+      
+      <div class="alert-banner">
+        <i class="fas fa-info-circle"></i>
+        <div>IA detectando patrones sospechosos - Aumentando monitorización</div>
+      </div>
+      
+      <h3 style="margin-top: 20px;"><i class="fas fa-clipboard-list"></i> Registro del Sistema</h3>
+      <pre id="log-hashes"></pre>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Star Tigo - Sistema Autónomo de Defensa y Protección Inmutable</p>
+    <p style="margin-top: 10px; font-size: 0.85rem;">
+      <i class="fas fa-shield-alt"></i> Todos los sistemas operativos | Monitoreo continuo activado
+    </p>
+  </footer>
+</div>
+
+<div id="index-view-container" widget="htmlLoader" class="body-wrap">
+  <div id="module-container"></div>
+</div>
+
+<script type="text/javascript" src="js/libs/jquery.min.js"></script>
+<script type="text/javascript" src="js/libs/datepicker.min.js"></script>
+<script type="text/javascript" src="js/libs/soundmanager2.min.js"></script>
+<script type="text/javascript" src="js/su/language.js"></script>
+<script type="text/javascript">
+    //<![CDATA[
+    try{
+        $.su.language = new $.su.Language();
+    }catch(error){
+        location.href = "./error.html";
+    }
+    //]]>
+</script>
+
+<script type="text/javascript" src="js/su/su.js"></script>
+<script type="text/javascript" src="js/su/services.js"></script>
+<script type="text/javascript" src="js/su/data.js"></script>
+<script type="text/javascript" src="js/su/widgets.js"></script>
+<script type="text/javascript" src="js/su/managers.js"></script>
+<script type="text/javascript" src="js/su/databinds.js"></script>
+<script type="text/javascript" src="js/su/application.js"></script>
+<script type="text/javascript" src="js/app/app.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Variables globales
+  let cycleCounter = 0;
+  let performanceChart, threatChart;
+  let logEntries = [];
+  let keyRotationTime = 3 * 3600 + 15 * 60 + 22; // 3 horas, 15 minutos, 22 segundos
+  
+  // Inicializar el sistema
+  function initSystem() {
+    // Inicializar gráficos
+    initCharts();
+    
+    // Generar logs iniciales
+    generateInitialLogs();
+    
+    // Iniciar el bucle de monitoreo
+    startMonitoringLoop();
+    
+    // Actualizar reloj
+    updateClock();
+    setInterval(updateClock, 1000);
+  }
+  
+  // Inicializar gráficos
+  function initCharts() {
+    // Gráfico de rendimiento
+    const performanceCtx = document.getElementById('performance-chart').getContext('2d');
+    performanceChart = new Chart(performanceCtx, {
+      type: 'line',
+      data: {
+        labels: Array(12).fill('').map((_, i) => `${i*5}s`),
+        datasets: [{
+          label: 'Uso de CPU',
+          data: Array(12).fill(0),
+          borderColor: '#4fc3f7',
+          backgroundColor: 'rgba(79, 195, 247, 0.1)',
+          tension: 0.4,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { min: 0, max: 100, ticks: { color: '#aaa' } },
+          x: { ticks: { color: '#aaa' } }
+        }
+      }
+    });
+    
+    // Gráfico de amenazas
+    const threatCtx = document.getElementById('threat-chart').getContext('2d');
+    threatChart = new Chart(threatCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Inyección SQL', 'XSS', 'DDoS', 'Malware', 'Phishing', 'Fuerza Bruta'],
+        datasets: [{
+          label: 'Intentos bloqueados',
+          data: [12, 8, 42, 5, 3, 19],
+          backgroundColor: 'rgba(255, 82, 82, 0.7)',
+          borderColor: 'rgba(255, 82, 82, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: true, ticks: { color: '#aaa' } },
+          x: { ticks: { color: '#aaa' } }
+        }
+      }
+    });
+  }
+  
+  // Generar logs iniciales
+  function generateInitialLogs() {
+    addLogEntry("Sistema de defensa inicializado", "info");
+    addLogEntry("Cargando módulos de seguridad...", "info");
+    addLogEntry("Módulo de encriptación activado - AES-256", "success");
+    addLogEntry("Firewall configurado - Nivel de protección máximo", "success");
+    addLogEntry("IA defensiva sincronizada - Protocolo TigoStar activado", "success");
+    addLogEntry("Iniciando monitorización continua 24/7", "info");
+  }
+  
+  // Bucle de monitoreo principal
+  function startMonitoringLoop() {
+    // Ejecutar inmediatamente la primera vez
+    updateSystemMetrics();
+    
+    // Configurar intervalo para actualización continua
+    setInterval(() => {
+      cycleCounter++;
+      updateSystemMetrics();
+      updateCharts();
+      updateKeyRotationTimer();
+      document.getElementById('cycle-counter').textContent = cycleCounter;
+    }, 3000); // Actualizar cada 3 segundos
+  }
+  
+  // Actualizar métricas del sistema
+  function updateSystemMetrics() {
+    // Actualizar uso de CPU (12% - 28%)
+    const cpuUsage = 12 + Math.random() * 16;
+    document.getElementById('cpu-usage').textContent = `${cpuUsage.toFixed(1)}%`;
+    
+    // Actualizar uso de memoria (20% - 35%)
+    const ramUsage = 20 + Math.random() * 15;
+    document.getElementById('ram-usage').textContent = `${ramUsage.toFixed(1)}%`;
+    
+    // Actualizar carga de red (0.8 - 2.5 Gb/s)
+    const networkLoad = (0.8 + Math.random() * 1.7).toFixed(1);
+    document.getElementById('network-load').textContent = `${networkLoad} Gb/s`;
+    
+    // Actualizar temperatura (38°C - 48°C)
+    const systemTemp = 38 + Math.random() * 10;
+    document.getElementById('system-temp').textContent = `${systemTemp.toFixed(1)}°C`;
+    
+    // Actualizar latencia de red (15ms - 45ms)
+    const networkLatency = 15 + Math.floor(Math.random() * 30);
+    document.getElementById('network-latency').textContent = `${networkLatency}ms`;
+    
+    // Actualizar estabilidad de red (99.5% - 99.9%)
+    const networkStability = (99.5 + Math.random() * 0.4).toFixed(1);
+    document.getElementById('network-stability').textContent = `${networkStability}%`;
+    
+    // Actualizar nivel de amenaza
+    const threatLevels = ['Bajo', 'Moderado', 'Elevado'];
+    const randomThreat = Math.random() > 0.85 ? threatLevels[2] : 
+                       Math.random() > 0.7 ? threatLevels[1] : threatLevels[0];
+    document.getElementById('threat-level').textContent = randomThreat;
+    
+    // Agregar entrada de log periódica
+    if (cycleCounter % 4 === 0) {
+      const messages = [
+        "Escaneo de red completo - Sin vulnerabilidades detectadas",
+        "Actualizando firmas de malware - 42 nuevas definiciones",
+        "Analizando tráfico de red - Patrones normales detectados",
+        "Verificando integridad del sistema - Todos los checksums válidos",
+        "Optimizando reglas de firewall - Rendimiento mejorado en 12%"
+      ];
+      addLogEntry(messages[Math.floor(Math.random() * messages.length)], "info");
+    }
+    
+    // Agregar alerta ocasional
+    if (Math.random() > 0.93) {
+      const alerts = [
+        "Intento de acceso no autorizado bloqueado",
+        "Patrón de tráfico sospechoso detectado",
+        "Escaneo de puertos detectado desde IP externa",
+        "Alerta: Posible intento de inyección SQL",
+        "Aumento inusual de tráfico en el puerto 443"
+      ];
+      addLogEntry(alerts[Math.floor(Math.random() * alerts.length)], "warning");
+    }
+  }
+  
+  // Actualizar gráficos
+  function updateCharts() {
+    // Actualizar gráfico de rendimiento
+    const performanceData = performanceChart.data.datasets[0].data;
+    performanceData.shift();
+    performanceData.push(12 + Math.random() * 16);
+    performanceChart.update();
+    
+    // Actualizar gráfico de amenazas ocasionalmente
+    if (cycleCounter % 5 === 0) {
+      const threatData = threatChart.data.datasets[0].data;
+      threatData.forEach((_, i) => {
+        threatData[i] = Math.min(50, threatData[i] + Math.floor(Math.random() * 5));
+      });
+      threatChart.update();
+    }
+  }
+  
+  // Actualizar temporizador de rotación de claves
+  function updateKeyRotationTimer() {
+    keyRotationTime -= 3;
+    if (keyRotationTime < 0) keyRotationTime = 12 * 3600; // Reset cada 12 horas
+    
+    const hours = Math.floor(keyRotationTime / 3600);
+    const minutes = Math.floor((keyRotationTime % 3600) / 60);
+    const seconds = keyRotationTime % 60;
+    
+    document.getElementById('key-rotation').textContent = 
+      `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+  
+  // Actualizar reloj
+  function updateClock() {
+    const now = new Date();
+    document.getElementById('last-update').textContent = 
+      now.toTimeString().substring(0, 8);
+  }
+  
+  // Añadir entrada al log
+  function addLogEntry(message, type = "info") {
+    const now = new Date();
+    const timeStr = now.toTimeString().substring(0, 8);
+    
+    const logEntry = document.createElement('div');
+    logEntry.className = 'log-entry';
+    logEntry.innerHTML = `
+      <span class="log-time">[${timeStr}]</span>
+      <span class="log-${type}">${message}</span>
+    `;
+    
+    const logContainer = document.getElementById('log-hashes');
+    logContainer.prepend(logEntry);
+    
+    // Mantener un máximo de 15 entradas
+    if (logContainer.children.length > 15) {
+      logContainer.removeChild(logContainer.lastChild);
+    }
+  }
+  
+  // Ejecutar verificación manual
+  function runManualSecurityCheck() {
+    const btn = document.querySelector('button');
+    const originalText = btn.innerHTML;
+    
+    btn.innerHTML = '<span class="spinner"></span> Escaneando...';
+    btn.disabled = true;
+    
+    setTimeout(() => {
+      addLogEntry("Escaneo de seguridad manual iniciado", "info");
+      
+      // Simular proceso de escaneo
+      setTimeout(() => {
+        addLogEntry("Escaneo de superficie completado - Sin amenazas", "success");
+        
+        setTimeout(() => {
+          addLogEntry("Escaneo profundo completado - 0 vulnerabilidades detectadas", "success");
+          addLogEntry("Escaneo de seguridad manual finalizado con éxito", "success");
+          
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+        }, 2000);
+      }, 1500);
+    }, 500);
+  }
+  
+  // Iniciar el sistema cuando la página cargue
+  window.onload = function() {
+    initSystem();
+    
+    // Cargar FontAwesome desde CDN
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+    document.head.appendChild(link);
+    
+    // Iniciar la aplicación existente
+    $.app = new $.su.App();
+    $.app.launch();
+  };
+</script>
+</body>
+</html>
