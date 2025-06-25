@@ -1,0 +1,14 @@
+{
+  "México": {
+    "idioma": "es",
+    "emojis": ["🇲🇽", "🫔", "🪅"],
+    "estilo": "verde-blanco-rojo",
+    "caracteres_seguridad": ["Ñ", "¡", "¿"]
+  },
+  "Japón": {
+    "idioma": "ja",
+    "emojis": ["🇯🇵", "🍣", "🎌"],
+    "estilo": "rojo-blanco",
+    "caracteres_seguridad": ["々", "ー", "！"]
+  }
+}
