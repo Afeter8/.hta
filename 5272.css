@@ -1,0 +1,15 @@
+@keyframes pulso {
+  0% { box-shadow: 0 0 10px #00ffcc; }
+  50% { box-shadow: 0 0 25px #00ffcc; }
+  100% { box-shadow: 0 0 10px #00ffcc; }
+}
+
+.escudo-activo {
+  border: 3px solid #00ffcc;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin: auto;
+  animation: pulso 2s infinite;
+  background: radial-gradient(circle, #00ffcc30, #000000);
+}
