@@ -1,0 +1,98 @@
+{
+  "sistemaConexion": {
+    "descripcion": "Configuración de conexión rotativa global y descentralizada para IA",
+    "proveedores": [
+      {
+        "nombre": "Telmex",
+        "pais": "México",
+        "region": "Centro",
+        "idioma": "es",
+        "tipoConexion": ["Fibra óptica", "ADSL", "Cable"],
+        "prioridad": 1
+      },
+      {
+        "nombre": "Megacable",
+        "pais": "México",
+        "region": "Occidente",
+        "idioma": "es",
+        "tipoConexion": ["Cable", "Fibra óptica"],
+        "prioridad": 2
+      },
+      {
+        "nombre": "izzi",
+        "pais": "México",
+        "region": "Centro-Sur",
+        "idioma": "es",
+        "tipoConexion": ["Cable", "Fibra óptica"],
+        "prioridad": 3
+      },
+      {
+        "nombre": "Totalplay",
+        "pais": "México",
+        "region": "Nacional",
+        "idioma": "es",
+        "tipoConexion": ["Fibra óptica"],
+        "prioridad": 4
+      },
+      {
+        "nombre": "Skay",
+        "pais": "Latinoamérica",
+        "region": "Sur",
+        "idioma": "es",
+        "tipoConexion": ["Satélite"],
+        "prioridad": 5
+      },
+      {
+        "nombre": "Starlink",
+        "pais": "Global",
+        "region": "Global",
+        "idioma": "multi",
+        "tipoConexion": ["Satélite"],
+        "prioridad": 6
+      },
+      {
+        "nombre": "CFE Internet",
+        "pais": "México",
+        "region": "Rural",
+        "idioma": "es",
+        "tipoConexion": ["Fibra óptica", "ADSL"],
+        "prioridad": 7
+      },
+      {
+        "nombre": "Blutelecom",
+        "pais": "México",
+        "region": "Norte",
+        "idioma": "es",
+        "tipoConexion": ["Cable", "Fibra óptica"],
+        "prioridad": 8
+      },
+      {
+        "nombre": "Axel",
+        "pais": "México",
+        "region": "Desconocido",
+        "idioma": "es",
+        "tipoConexion": ["ADSL"],
+        "prioridad": 9
+      },
+      {
+        "nombre": "Telefónica",
+        "pais": "España",
+        "region": "Europa",
+        "idioma": "es",
+        "tipoConexion": ["Fibra óptica", "ADSL", "Cable"],
+        "prioridad": 10
+      }
+    ],
+    "parametrosRotacion": {
+      "intervaloSegundos": 10,
+      "maxIntentos": 5,
+      "estrategia": "rotativo",
+      "fallbackHabilitado": true
+    },
+    "metadata": {
+      "fechaCreacion": "2025-06-26T00:00:00Z",
+      "autor": "Star Tigo",
+      "version": "1.0"
+    }
+  }
+}
