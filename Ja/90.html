@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reinicio IA Seguro</title>
+</head>
+<body>
+  <h2>Reinicio del sistema de IA - Star Tigo 🔁</h2>
+  <button onclick="reiniciarIA()">🔄 Reiniciar IA de Fernando GME</button>
+  <script>
+    async function reiniciarIA() {
+      await fetch("http://127.0.0.1:9797", {
+        method: "POST",
+        body: "REINICIAR_FGM_SYSTEM"
+      });
+      alert("🛡️ Comando enviado a la IA.");
+    }
+  </script>
+</body>
+</html>
