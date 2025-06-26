@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Red Total IA - Defensa Global</title>
+  <style>
+    body { background:#000; color:#0f0; font-family:monospace; padding:2rem; }
+    .log { height: 300px; overflow-y: scroll; border:1px solid #0f0; padding:10px; }
+  </style>
+</head>
+<body>
+  <h1>🌐 Red Total IA: Defensa Universal</h1>
+  <p>Modo: <strong>Inmutable + Autónomo</strong></p>
+  <div class="log" id="log">Iniciando defensa...</div>
+
+  <script>
+    function log(msg) {
+      const l = document.getElementById("log");
+      l.innerHTML += `<div>> ${msg}</div>`;
+      l.scrollTop = l.scrollHeight;
+    }
+
+    setInterval(() => {
+      log("✅ Red y defensa OK - " + new Date().toLocaleTimeString());
+    }, 5000);
+  </script>
+</body>
+</html>
