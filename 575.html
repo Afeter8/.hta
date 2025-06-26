@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Conexión Descentralizada - Star Tigo</title>
+  <style>
+    body {
+      background: #111;
+      color: #0f0;
+      font-family: monospace;
+      padding: 1rem;
+    }
+    #log, #status {
+      background: #000;
+      border: 1px solid #0f0;
+      padding: 10px;
+      margin-top: 10px;
+      overflow-y: auto;
+    }
+    #log { height: 300px; white-space: pre-wrap; }
+    button {
+      margin-top: 1rem;
+      background: #0f0;
+      color: #000;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Sistema IA Star Tigo - Conexión Global Descentralizada</h1>
+  <div id="status">Esperando iniciar sistema...</div>
+  <div id="log"></div>
+  <button onclick="iniciarConexion()">Iniciar conexión IA</button>
+
+  <script>
+    const statusEl = document.getElementById('status');
+    const logEl = document.getElementById('log');
+
+    const proveedores = [
+      "Telmex", "Megacable", "izzi", "Totalplay", "Skay", "Starlink",
+      "CFE Internet", "Blutelecom", "Axel", "Telefónica", "Unefon", "Altán Redes"
+    ];
+
+    const regiones = [
+      "México - Norte", "México - Centro", "México - Sur",
+      "Latinoamérica", "Europa", "Asia", "Global"
+    ];
+
+    let proveedorActual = "";
+    let regionActual = "";
+    let intento = 0;
+
+    function log(msg) {
+      const hora = new Date().toLocaleTimeString();
+      logEl.textContent += `[${hora}] ${msg}\n`;
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+
+    function seleccionarProveedor() {
+      proveedorActual = proveedores[Math.floor(Math.random() * proveedores.length)];
+      regionActual = regiones[Math.floor(Math.random() * regiones.length)];
+      return `${proveedorActual} (${regionActual})`;
+    }
+
+    function simularConexion() {
+      intento++;
+      const proveedor = seleccionarProveedor();
+      log(`Intento #${intento}: Conectando a ${proveedor}...`);
+
+      const exito = Math.random() > 0.1; // 90% éxito
+      if (exito) {
+        statusEl.textContent = `🟢 Conectado a ${proveedor}`;
+        log(`✅ Conexión establecida con ${proveedor}`);
+      } else {
+        statusEl.textContent = `🔴 Error con ${proveedor}, intentando otro...`;
+        log(`❌ Fallo de conexión. Reintentando...`);
+        setTimeout(simularConexion, 3000);
+      }
+
+      // Simula rotación cada 10 segundos para asegurar robustez
+      setTimeout(() => {
+        log(`♻️ Rotación automática activada`);
+        simularConexion();
+      }, 10000);
+    }
+
+    function iniciarConexion() {
+      log("🌐 Sistema de conexión iniciado en bucle eterno.");
+      simularConexion();
+    }
+  </script>
+
+</body>
+</html>
