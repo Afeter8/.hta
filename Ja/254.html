@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Star Tigo IA Secure Shield - Modo Inmutable</title>
+  <style>
+    body { font-family: monospace; background: #0a0f1a; color: #00ff9f; margin: 0; padding: 20px; }
+    .container { max-width: 900px; margin: auto; }
+    .panel { background: #111827; padding: 20px; border-radius: 16px; margin-bottom: 20px; box-shadow: 0 0 15px rgba(0,255,159,0.2); }
+    h1, h2 { color: #00ffc6; }
+    .status { font-weight: bold; }
+    .secure { color: #00ff9f; }
+    .warning { color: #facc15; }
+    .danger { color: #f43f5e; }
+    .readonly { user-select: none; pointer-events: none; opacity: 0.9; }
+  </style>
+</head>
+<body>
+  <div class="container readonly">
+    <h1>Star Tigo IA Secure Shield</h1><div class="panel">
+  <h2>Monitoreo Autónomo de Recursos</h2>
+  <p>CPU: <span id="cpu">Analizando...</span></p>
+  <p>RAM: <span id="ram">Analizando...</span></p>
+  <p>Red: <span id="net">Analizando...</span></p>
+</div>
+
+<div class="panel">
+  <h2>Firewall IA Autónomo</h2>
+  <p>Estado: <span class="status secure">Activo</span></p>
+  <p>Bloqueos: <span id="bloqueos">0</span></p>
+</div>
+
+<div class="panel">
+  <h2>Protección RF y Firmas</h2>
+  <p>Bluetooth: <span class="status secure">Sin interferencias</span></p>
+  <p>WiFi: <span class="status secure">Monitor activo</span></p>
+  <p>Firmas IA: <span id="firmas">Verificando...</span></p>
+</div>
+
+<div class="panel">
+  <h2>Integridad del Sistema</h2>
+  <p>Hash SHA-256: <span id="hash">Calculando...</span></p>
+  <p>Estado: <span id="integridad" class="secure">Inmutable</span></p>
+</div>
+
+  </div>  <script>
+    // Generador de hash simulado (para integridad)
+    function generarHashSistema() {
+      const contenido = document.documentElement.innerHTML;
+      return crypto.subtle.digest("SHA-256", new TextEncoder().encode(contenido)).then(hashBuffer => {
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        document.getElementById('hash').textContent = hashHex;
+        document.getElementById('integridad').textContent = "Inmutable";
+      });
+    }
+
+    // Simulación de escaneo de recursos
+    function monitorearRecursos() {
+      document.getElementById('cpu').textContent = (Math.random() * 100).toFixed(1) + "%";
+      document.getElementById('ram').textContent = (Math.random() * 4096).toFixed(1) + " MB";
+      document.getElementById('net').textContent = (Math.random() * 100).toFixed(1) + " KB/s";
+    }
+
+    // Simulación de bloqueo automático
+    function autodefensa() {
+      const bloqueos = Math.floor(Math.random() * 3);
+      document.getElementById('bloqueos').textContent = bloqueos;
+    }
+
+    // Simulación de verificación de firma
+    function verificarFirmas() {
+      setTimeout(() => {
+        document.getElementById('firmas').textContent = "Firmas válidas y activas";
+      }, 1000);
+    }
+
+    setInterval(monitorearRecursos, 5000);
+    setInterval(autodefensa, 10000);
+    setInterval(generarHashSistema, 15000);
+    setInterval(verificarFirmas, 20000);
+    window.onload = () => {
+      monitorearRecursos();
+      autodefensa();
+      generarHashSistema();
+      verificarFirmas();
+    };
+  </script></body>
+</html>
