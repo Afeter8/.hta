@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Tigo IA Secure Shield - Modo Inmutable</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00ff9f;
+            --primary-light: #00ffc6;
+            --secondary: #0a0f1a;
+            --dark: #111827;
+            --darker: #0a0c15;
+            --warning: #facc15;
+            --danger: #f43f5e;
+            --info: #3b82f6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Consolas', 'Courier New', monospace;
+            background: var(--secondary);
+            color: var(--primary);
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(10, 31, 41, 0.5) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(10, 31, 41, 0.5) 0%, transparent 20%);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .header-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 300px;
+            background: radial-gradient(ellipse at center, rgba(0, 255, 159, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(0, 255, 159, 0.2);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .logo {
+            color: var(--primary);
+            font-size: 2.5rem;
+            animation: pulse 2s infinite;
+        }
+        
+        h1 {
+            color: var(--primary-light);
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 255, 198, 0.5);
+        }
+        
+        .status-badge {
+            background: rgba(0, 255, 159, 0.1);
+            border: 1px solid var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .panel {
+            background: var(--dark);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 0 15px rgba(0, 255, 159, 0.2);
+            border: 1px solid rgba(0, 255, 159, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        
+        .panel:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(0, 255, 159, 0.3);
+        }
+        
+        .panel h2 {
+            color: var(--primary-light);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .panel h2 i {
+            font-size: 1.2rem;
+        }
+        
+        .metric {
+            margin-bottom: 15px;
+        }
+        
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .progress-container {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        .status {
+            font-weight: bold;
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+        
+        .secure {
+            background: rgba(0, 255, 159, 0.15);
+            color: var(--primary);
+        }
+        
+        .warning {
+            background: rgba(250, 204, 21, 0.15);
+            color: var(--warning);
+        }
+        
+        .danger {
+            background: rgba(244, 63, 94, 0.15);
+            color: var(--danger);
+        }
+        
+        .threat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .threat-card {
+            background: rgba(10, 15, 30, 0.7);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .threat-card:hover {
+            background: rgba(15, 25, 50, 0.8);
+            transform: translateY(-3px);
+        }
+        
+        .threat-card i {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--warning);
+        }
+        
+        .defense-system {
+            background: var(--darker);
+            padding: 20px;
+            border-radius: 16px;
+            margin-top: 20px;
+            border: 1px solid rgba(0, 255, 159, 0.1);
+        }
+        
+        .defense-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .defense-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+        }
+        
+        .logs-container {
+            height: 200px;
+            overflow-y: auto;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .log-entry {
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .log-timestamp {
+            color: var(--primary-light);
+            margin-right: 10px;
+        }
+        
+        .log-message {
+            color: white;
+        }
+        
+        .critical {
+            color: var(--danger);
+        }
+        
+        .alert {
+            color: var(--warning);
+        }
+        
+        .info {
+            color: var(--info);
+        }
+        
+        .immutable-badge {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 255, 159, 0.1);
+            border: 1px solid var(--primary);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 100;
+        }
+        
+        .shield-icon {
+            color: var(--primary);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .threat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-glow"></div>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <i class="fas fa-shield-alt logo"></i>
+                <h1>STAR TIGO IA SECURE SHIELD</h1>
+            </div>
+            <div class="status-badge">
+                <i class="fas fa-lock"></i> MODO INMUTABLE ACTIVADO - SISTEMA AUTOPROTEGIDO
+            </div>
+        </header>
+        
+        <div class="dashboard">
+            <div class="panel">
+                <h2><i class="fas fa-microchip"></i> Monitoreo Autónomo de Recursos</h2>
+                <div class="metric">
+                    <div class="metric-header">
+                        <span>CPU</span>
+                        <span id="cpu">0%</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="cpu-bar" style="width: 0%; background: var(--primary);"></div>
+                    </div>
+                </div>
+                <div class="metric">
+                    <div class="metric-header">
+                        <span>Memoria RAM</span>
+                        <span id="ram">0 MB</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="ram-bar" style="width: 0%; background: var(--info);"></div>
+                    </div>
+                </div>
+                <div class="metric">
+                    <div class="metric-header">
+                        <span>Red</span>
+                        <span id="net">0 KB/s</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="net-bar" style="width: 0%; background: var(--primary-light);"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel">
+                <h2><i class="fas fa-fire"></i> Firewall IA Autónomo</h2>
+                <div class="metric">
+                    <div class="metric-header">
+                        <span>Estado</span>
+                        <span class="status secure">ACTIVO <i class="fas fa-check"></i></span>
+                    </div>
+                </div>
+                <div class="metric">
+                    <div class="metric-header">
+                        <span>Bloqueos en tiempo real</span>
+                        <span id="bloqueos">0</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="firewall-bar" style="width: 0%; background: var(--warning);"></div>
+                    </div>
+                </div>
+                <div class="metric">
+                    <div class="metric-header">
+                        <span>Última amenaza</span>
+                        <span id="last-threat">Ninguna</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel">
+                <h2><i class="fas fa-wifi"></i> Protección RF y Firmas</h2>
+                <div class="metric">
+                    <div class="metric-header">
+                        <span>Bluetooth</span>
+                        <span class="status secure">Sin interferencias</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 30%; background: var(--primary);"></div>
+                    </div>
+                </div>
+                <div class="metric">
+                    <div class="metric-header">
+                        <span>WiFi</span>
+                        <span class="status secure">Monitor activo</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 45%; background: var(--primary);"></div>
+                    </div>
+                </div>
+                <div class="metric">
+                    <div class="metric-header">
+                        <span>Firmas IA</span>
+                        <span id="firmas" class="status secure">Verificando...</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="firmas-bar" style="width: 0%; background: var(--primary);"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel">
+                <h2><i class="fas fa-fingerprint"></i> Integridad del Sistema</h2>
+                <div class="metric">
+                    <div class="metric-header">
+                        <span>Estado del Escudo</span>
+                        <span id="integridad" class="status secure">Inmutable</span>
+                    </div>
+                </div>
+                <div class="metric">
+                    <div class="metric-header">
+                        <span>Hash SHA-256</span>
+                    </div>
+                    <div id="hash" style="word-break: break-all; font-size: 0.8rem; margin-top: 5px;">
+                        7a3b9d...f8c2e1 (Calculando...)
+                    </div>
+                </div>
+                <div class="metric">
+                    <div class="metric-header">
+                        <span>Última verificación</span>
+                        <span id="last-check">Hace 0 segundos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel">
+            <h2><i class="fas fa-radar"></i> Detección de Amenazas</h2>
+            <div class="threat-grid">
+                <div class="threat-card">
+                    <i class="fas fa-bug"></i>
+                    <div>Malware</div>
+                    <div id="threat-malware">0 detectados</div>
+                </div>
+                <div class="threat-card">
+                    <i class="fas fa-user-secret"></i>
+                    <div>Intrusos</div>
+                    <div id="threat-intrusos">0 detectados</div>
+                </div>
+                <div class="threat-card">
+                    <i class="fas fa-network-wired"></i>
+                    <div>DDoS</div>
+                    <div id="threat-ddos">0 detectados</div>
+                </div>
+                <div class="threat-card">
+                    <i class="fas fa-virus"></i>
+                    <div>Ransomware</div>
+                    <div id="threat-ransomware">0 detectados</div>
+                </div>
+                <div class="threat-card">
+                    <i class="fas fa-phishing"></i>
+                    <div>Phishing</div>
+                    <div id="threat-phishing">0 detectados</div>
+                </div>
+                <div class="threat-card">
+                    <i class="fas fa-code"></i>
+                    <div>Inyección</div>
+                    <div id="threat-inyeccion">0 detectados</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="defense-system">
+            <div class="defense-header">
+                <h2><i class="fas fa-robot"></i> Sistema Autónomo de Defensa</h2>
+                <div class="defense-status">
+                    <div class="status-indicator"></div>
+                    <span>ACTIVO</span>
+                </div>
+            </div>
+            <div class="logs-container" id="defense-logs">
+                <div class="log-entry">
+                    <span class="log-timestamp">[12:00:00]</span>
+                    <span class="log-message info">Sistema de defensa iniciado. Modo inmutable activado.</span>
+                </div>
+                <div class="log-entry">
+                    <span class="log-timestamp">[12:00:01]</span>
+                    <span class="log-message info">Bucle eterno de seguridad iniciado. Monitoreo 24/7 activado.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="immutable-badge">
+        <i class="fas fa-shield-alt shield-icon"></i>
+        MODO INMUTABLE ACTIVO
+    </div>
+
+    <script>
+        // Sistema de defensa mejorado con bucles eternos
+        document.addEventListener('DOMContentLoaded', () => {
+            // Elementos del DOM
+            const cpuElement = document.getElementById('cpu');
+            const ramElement = document.getElementById('ram');
+            const netElement = document.getElementById('net');
+            const bloqueosElement = document.getElementById('bloqueos');
+            const firmasElement = document.getElementById('firmas');
+            const hashElement = document.getElementById('hash');
+            const lastCheckElement = document.getElementById('last-check');
+            const lastThreatElement = document.getElementById('last-threat');
+            const defenseLogs = document.getElementById('defense-logs');
+            
+            // Elementos de amenazas
+            const threatElements = {
+                malware: document.getElementById('threat-malware'),
+                intrusos: document.getElementById('threat-intrusos'),
+                ddos: document.getElementById('threat-ddos'),
+                ransomware: document.getElementById('threat-ransomware'),
+                phishing: document.getElementById('threat-phishing'),
+                inyeccion: document.getElementById('threat-inyeccion')
+            };
+            
+            // Contadores de amenazas
+            const threatCounters = {
+                malware: 0,
+                intrusos: 0,
+                ddos: 0,
+                ransomware: 0,
+                phishing: 0,
+                inyeccion: 0
+            };
+            
+            // Tipos de amenazas para simulación
+            const threatTypes = [
+                "Intento de intrusión",
+                "Ataque DDoS detectado",
+                "Malware identificado",
+                "Intento de phishing",
+                "Ataque de inyección SQL",
+                "Ransomware detectado",
+                "Escaneo de puertos sospechoso",
+                "Fuga de datos potencial"
+            ];
+            
+            // Simular monitoreo de recursos en bucle eterno
+            function monitorearRecursos() {
+                const cpu = Math.min(100, Math.random() * 45 + 5);
+                const ram = Math.random() * 3072 + 512;
+                const net = Math.random() * 85 + 15;
+                
+                cpuElement.textContent = `${cpu.toFixed(1)}%`;
+                ramElement.textContent = `${ram.toFixed(1)} MB`;
+                netElement.textContent = `${net.toFixed(1)} KB/s`;
+                
+                document.getElementById('cpu-bar').style.width = `${cpu}%`;
+                document.getElementById('ram-bar').style.width = `${(ram / 4096) * 100}%`;
+                document.getElementById('net-bar').style.width = `${net}%`;
+                
+                setTimeout(monitorearRecursos, 1500);
+            }
+            
+            // Simular sistema de defensa autónomo
+            function autodefensa() {
+                // Bloqueos aleatorios
+                const bloqueos = Math.floor(Math.random() * 3);
+                const currentBlocks = parseInt(bloqueosElement.textContent);
+                bloqueosElement.textContent = currentBlocks + bloqueos;
+                
+                // Actualizar barra de firewall
+                const firewallBar = document.getElementById('firewall-bar');
+                const newWidth = Math.min(100, (currentBlocks + bloqueos) * 5);
+                firewallBar.style.width = `${newWidth}%`;
+                
+                // Simular detección de amenazas
+                if (Math.random() > 0.7) {
+                    const threatType = threatTypes[Math.floor(Math.random() * threatTypes.length)];
+                    lastThreatElement.textContent = threatType;
+                    
+                    // Determinar categoría de amenaza
+                    let threatCategory = "malware";
+                    if (threatType.includes("DDoS")) threatCategory = "ddos";
+                    else if (threatType.includes("intrusión")) threatCategory = "intrusos";
+                    else if (threatType.includes("phishing")) threatCategory = "phishing";
+                    else if (threatType.includes("inyección")) threatCategory = "inyeccion";
+                    else if (threatType.includes("Ransomware")) threatCategory = "ransomware";
+                    
+                    // Actualizar contador
+                    threatCounters[threatCategory]++;
+                    threatElements[threatCategory].textContent = `${threatCounters[threatCategory]} detectados`;
+                    
+                    // Agregar al log
+                    const now = new Date();
+                    const timestamp = `[${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}]`;
+                    
+                    const logEntry = document.createElement('div');
+                    logEntry.className = 'log-entry';
+                    logEntry.innerHTML = `
+                        <span class="log-timestamp">${timestamp}</span>
+                        <span class="log-message danger">AMENAZA: ${threatType} - BLOQUEADA</span>
+                    `;
+                    
+                    defenseLogs.appendChild(logEntry);
+                    defenseLogs.scrollTop = defenseLogs.scrollHeight;
+                }
+                
+                setTimeout(autodefensa, 1000);
+            }
+            
+            // Simular generación de hash
+            function generarHashSistema() {
+                const chars = '0123456789abcdef';
+                let hash = '';
+                for (let i = 0; i < 64; i++) {
+                    hash += chars[Math.floor(Math.random() * 16)];
+                }
+                
+                hashElement.textContent = hash;
+                
+                // Actualizar tiempo de última verificación
+                const now = new Date();
+                lastCheckElement.textContent = `Hace 0 segundos`;
+                
+                // Actualizar progreso de firmas
+                document.getElementById('firmas-bar').style.width = '100%';
+                firmasElement.textContent = "Firmas válidas";
+                
+                setTimeout(generarHashSistema, 10000);
+            }
+            
+            // Actualizar tiempo de verificación
+            function updateCheckTime() {
+                const now = new Date();
+                const seconds = Math.floor((now - startTime) / 1000);
+                lastCheckElement.textContent = `Hace ${seconds} segundos`;
+                
+                setTimeout(updateCheckTime, 1000);
+            }
+            
+            // Iniciar todos los sistemas
+            const startTime = new Date();
+            monitorearRecursos();
+            autodefensa();
+            generarHashSistema();
+            updateCheckTime();
+            
+            // Añadir logs informativos periódicos
+            setInterval(() => {
+                const now = new Date();
+                const timestamp = `[${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}]`;
+                
+                const messages = [
+                    "Sistema operando en niveles óptimos",
+                    "Escaneo profundo completado - Sin amenazas",
+                    "Actualizando firmas de seguridad",
+                    "Verificando integridad del sistema",
+                    "Optimizando recursos de defensa"
+                ];
+                
+                const message = messages[Math.floor(Math.random() * messages.length)];
+                
+                const logEntry = document.createElement('div');
+                logEntry.className = 'log-entry';
+                logEntry.innerHTML = `
+                    <span class="log-timestamp">${timestamp}</span>
+                    <span class="log-message info">${message}</span>
+                `;
+                
+                defenseLogs.appendChild(logEntry);
+                defenseLogs.scrollTop = defenseLogs.scrollHeight;
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
