@@ -1,0 +1,10 @@
+{
+  "idioma": "es",
+  "region": "Latinoamérica",
+  "pais": "México",
+  "usuario": "Fernando Guadalupe Mendez Espinoza",
+  "modo_inmutable": true,
+  "verificacion_biometrica": true,
+  "bloqueo_humano": true,
+  "protocolos": ["TCP", "UDP", "DNS", "HTTPS"]
+}
