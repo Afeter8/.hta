@@ -1,0 +1,64 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0e0e0e;
+  color: #00ffcc;
+  margin: 0;
+  padding: 20px;
+}
+
+h1, h2 {
+  color: #00f9ff;
+  text-align: center;
+  animation: parpadeo 2s infinite;
+}
+
+@keyframes parpadeo {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+#status-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.status-box {
+  background-color: #1a1a1a;
+  border: 1px solid #00ffaa;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00ffaa44;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.status-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #00ffaa99;
+}
+
+.status-nombre {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.status-estado {
+  font-size: 16px;
+  font-style: italic;
+  margin-top: 5px;
+}
+
+.estado-conectado {
+  color: #00ff00;
+}
+
+.estado-fallo {
+  color: #ff4444;
+}
+
+.estado-intentando {
+  color: #ffaa00;
+}
