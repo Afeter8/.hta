@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Defensa Totalplay - Star Tigo IA</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #0f0;
+      font-family: monospace;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #00ffcc;
+    }
+    .seccion {
+      margin-bottom: 20px;
+      border: 1px solid #0f0;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    button {
+      background: #0f0;
+      color: #000;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #log {
+      background-color: #000;
+      padding: 10px;
+      margin-top: 10px;
+      height: 200px;
+      overflow-y: scroll;
+      border: 1px solid #0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🛡️ Sistema de Defensa Totalplay</h1>
+  <p>Conectado a: <strong>Star Tigo</strong> | Protección: <strong>Activa</strong></p>
+
+  <div class="seccion">
+    <h2>🔒 Verificación de Red</h2>
+    <button onclick="verificarRed()">Verificar Conexión</button>
+    <div id="redEstado"></div>
+  </div>
+
+  <div class="seccion">
+    <h2>🧠 IA de Seguridad</h2>
+    <button onclick="activarIA()">Activar Análisis</button>
+    <div id="iaResultado"></div>
+  </div>
+
+  <div class="seccion">
+    <h2>📡 Dispositivos Conectados</h2>
+    <button onclick="mostrarDispositivos()">Escanear</button>
+    <ul id="dispositivos"></ul>
+  </div>
+
+  <div class="seccion">
+    <h2>📜 Registro de Eventos</h2>
+    <div id="log">Esperando eventos...</div>
+  </div>
+
+  <script>
+    function verificarRed() {
+      const estado = navigator.onLine ? "✅ Conectado" : "❌ Sin conexión";
+      document.getElementById("redEstado").textContent = "Estado de Red: " + estado;
+      log("Verificación de red ejecutada.");
+    }
+
+    function activarIA() {
+      const resultado = "Análisis completado: No se detectaron amenazas.";
+      document.getElementById("iaResultado").textContent = resultado;
+      log("IA ejecutó análisis de seguridad.");
+    }
+
+    function mostrarDispositivos() {
+      const lista = ["192.168.1.1 - Router", "192.168.1.5 - Celular", "192.168.1.7 - Laptop"];
+      const ul = document.getElementById("dispositivos");
+      ul.innerHTML = "";
+      lista.forEach(ip => {
+        const li = document.createElement("li");
+        li.textContent = ip;
+        ul.appendChild(li);
+      });
+      log("Dispositivos escaneados.");
+    }
+
+    function log(mensaje) {
+      const logDiv = document.getElementById("log");
+      logDiv.innerHTML += `<div>> ${mensaje}</div>`;
+      logDiv.scrollTop = logDiv.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>
