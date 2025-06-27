@@ -1,0 +1,14 @@
+{
+  "tipos_de_hackers": {
+    "white_hat": "Hacker ético que protege sistemas legalmente.",
+    "black_hat": "Hacker malicioso que rompe sistemas con fines ilegales.",
+    "gray_hat": "Actúa sin permiso pero no con fines destructivos.",
+    "blue_hat": "Hacker que prueba sistemas antes del lanzamiento.",
+    "red_team": "Grupo que simula ataques reales para pruebas.",
+    "purple_team": "Colabora entre red team y blue team.",
+    "green_hat": "Hacker principiante pero con interés en aprender.",
+    "hacktivist": "Hacker con fines políticos o sociales.",
+    "script_kiddie": "Usa herramientas sin conocimiento profundo.",
+    "state_sponsored": "Apoyado por gobiernos para ciberespionaje."
+  }
+}
