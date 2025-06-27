@@ -1,0 +1,14 @@
+{
+  "tecnicas": [
+    "Phishing",
+    "Sniffing de redes",
+    "SQL Injection",
+    "Cross-Site Scripting (XSS)",
+    "Fuerza bruta",
+    "MitM (Man in the Middle)",
+    "Backdoors",
+    "Keylogging",
+    "Ransomware",
+    "Exploits de día cero"
+  ]
+}
