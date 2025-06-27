@@ -1,0 +1,9 @@
+{
+  "auto_repair_loop": true,
+  "watch_interval": "60s",
+  "source": "IPFS/eth_contract",
+  "condition": {
+    "if": "altered",
+    "then": "restore + log"
+  }
+}
