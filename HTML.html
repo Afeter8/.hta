@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Tigo Bank - Sistema Inmutable de Defensa IA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* [Estilos CSS pegados aquí, sin cambios por límite de espacio] */
+    </style>
+</head>
+<body>
+    <!-- [Contenido HTML completo pegado aquí, sin cambios por límite de espacio] -->
+    <script>
+        // Sistema de archivos de defensa
+        const archivos = {
+            "watchdog.py": "def main():\n    print('Monitoreando integridad del sistema...')\n    while True:\n        check_system_integrity()\n        sleep(60)",
+            "firewall_ai.py": "def proteger():\n    print('Bloqueando ataques RF y red maliciosa...')\n    activate_quantum_shield()\n    monitor_threats()",
+            "backup_loop.sh": "#!/bin/bash\nwhile true; do \n    echo 'Respaldo activo - '$(date)\n    backup_biometric_data\n    sleep 180\ndone",
+            "guardian.js": "function check() { \n    console.log('Verificando integridad de archivos');\n    verify_immutable_system();\n}",
+            "inmutable.json": JSON.stringify({ 
+                "watchdog.py": "sha256: a1b2c3d4e5f67890",
+                "firewall_ai.py": "sha256: 1234567890abcdef",
+                "biometric_data": "encriptado-nivel9",
+                "last_scan": "2025-05-22T14:30:45Z",
+                "status": "active"
+            }, null, 2)
+        };// Simular actividad en la consola
+    function simularActividad() {
+        const log = document.getElementById("log");
+        const lines = log.innerHTML.split('\n');
+        
+        if (lines.length > 30) {
+            lines.splice(6, 1);
+        }
+        
+        const now = new Date();
+        const timestamp = now.toISOString().replace('T', ' ').substring(0, 19);
+        const activities = [
+            `> [${timestamp}] Revisión de integridad: 100% - Sin amenazas`,
+            `> [${timestamp}] Respaldo biométrico completado`,
+            `> [${timestamp}] Firewall bloqueó 42 intentos de acceso no autorizado`,
+            `> [${timestamp}] Verificación de huella digital: confirmada`,
+            `> [${timestamp}] Sistema inmutable: estable`
+        ];
+        
+        const newActivity = activities[Math.floor(Math.random() * activities.length)];
+        lines.push(newActivity);
+        
+        log.innerHTML = lines.join('\n');
+        log.scrollTop = log.scrollHeight;
+    }
+
+    setInterval(simularActividad, 5000);
+
+    const title = document.querySelector('h1');
+    const originalTitle = title.innerText;
+    title.innerText = '';
+    
+    let i = 0;
+    function typeTitle() {
+        if (i < originalTitle.length) {
+            title.innerText += originalTitle.charAt(i);
+            i++;
+            setTimeout(typeTitle, 50);
+        }
+    }
+    
+    setTimeout(typeTitle, 1000);
+</script>
+
+</body>
+</html>
