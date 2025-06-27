@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Inmueble Inmutable</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #00ff41;
+      font-family: monospace;
+      margin: 0;
+      padding: 2em;
+    }
+    .log {
+      background-color: #111;
+      padding: 1em;
+      border: 1px solid #00ff41;
+      border-radius: 10px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .status {
+      color: #66ffcc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sistema Inmueble Inmutable</h1>
+  <p class="status">Estado: <strong id="status">Verificando integridad...</strong></p>
+  <div class="log" id="log">
+    <p>[Iniciado] Protección activa</p>
+  </div>  <script>
+    const hashOriginal = "bca943bcf10aefa7741fa58a1e9d812cc905a8d548..."; // SHA-512 ficticio
+    const ipfsBackup = "https://ipfs.io/ipfs/QmEjemploHashFijo";
+
+    function log(msg) {
+      const logBox = document.getElementById('log');
+      const p = document.createElement('p');
+      p.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+      logBox.appendChild(p);
+    }
+
+    function verificarIntegridad() {
+      log('Verificando integridad de código...');
+      // Simulación: validación automática de integridad
+      setTimeout(() => {
+        const archivoIntacto = true; // Simulación
+        if (archivoIntacto) {
+          document.getElementById('status').textContent = 'Sistema íntegro ✅';
+          log('Integridad confirmada. Sistema inmutable.');
+        } else {
+          document.getElementById('status').textContent = 'Integridad comprometida ❌';
+          log('Alerta: Alteración detectada. Restaurando desde IPFS...');
+          setTimeout(() => {
+            log(`Archivo restaurado desde IPFS: ${ipfsBackup}`);
+            document.getElementById('status').textContent = 'Restaurado y asegurado ✅';
+          }, 2000);
+        }
+      }, 1500);
+    }
+
+    setInterval(verificarIntegridad, 10000);
+  </script></body>
+</html>
