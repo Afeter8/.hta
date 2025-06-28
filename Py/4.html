@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sistema Inmutable FGME - Defensa IA</title>
+    <style>
+        body { 
+            background-color: #000; 
+            color: #0f0; 
+            font-family: 'Courier New', monospace; 
+            padding: 20px; 
+            margin: 0; 
+        }
+        .panel {
+            border: 2px solid #0f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            background: #111;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+        }
+        h1, h2 {
+            color: #0f0;
+            text-align: center;
+            text-shadow: 0 0 5px #0f0;
+        }
+        code {
+            background: #222;
+            padding: 15px;
+            display: block;
+            white-space: pre-wrap;
+            margin: 15px 0;
+            border-left: 3px solid #0f0;
+            overflow-x: auto;
+        }
+        .status {
+            color: #ff0;
+            font-weight: bold;
+            padding: 5px;
+        }
+        .critical {
+            color: #f00;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0.3; } }
+    </style>
+</head>
+<body>
+    <h1>SISTEMA INMUTABLE FGME</h1>
+    <h2>Defensa IA - Núcleo de Protección Total</h2>
+
+    <!-- Panel de Estado del Sistema -->
+    <div class="panel">
+        <h3>ESTADO DEL SISTEMA</h3>
+        <div id="systemStatus">
+            <span class="status">Escaneando procesos...</span>
+        </div>
+    </div>
+
+    <!-- Capa 1: Firewall DNS -->
+    <div class="panel">
+        <h3>CAPA 1: FIREWALL DNS</h3>
+        <code>// firewall_dns.js (Actualizado)
+const blockedDomains = [
+    "internet-start.net", "malicious-domain.com",
+    "hack-attempt.ru", "phishing-site.org"
+];
+
+const originalFetch = window.fetch;
+window.fetch = async (url, options) => {
+    const domain = new URL(url).hostname;
+    if (blockedDomains.some(d => domain.includes(d))) {
+        console.error(`[FGME] Bloqueado: ${url}`);
+        return new Response(null, { status: 403 });
+    }
+    return originalFetch(url, options);
+};</code>
+    </div>
+
+    <!-- Capa 2: IA de Defensa Activa -->
+    <div class="panel">
+        <h3>CAPA 2: DEFENSA ACTIVA (IA)</h3>
+        <code># ia_defensa.py (Actualizado)
+import psutil
+import time
+
+CRITICAL_PROCESSES = [
+    "ransomware.exe", "cryptolocker", 
+    "keylogger.dll", "trojan.bin"
+]
+
+def terminate_process(pid):
+    try:
+        process = psutil.Process(pid)
+        process.terminate()
+        return True
+    except:
+        return False
+
+def defense_cycle():
+    print("[FGME-IA] Escaneo iniciado")
+    terminated = []
+    
+    for proc in psutil.process_iter(['pid', 'name', 'exe']):
+        try:
+            proc_name = proc.info['name'].lower()
+            proc_exe = proc.info['exe'].lower() if proc.info['exe'] else ""
+            
+            if any(threat in proc_name or threat in proc_exe 
+                   for threat in CRITICAL_PROCESSES):
+                if terminate_process(proc.info['pid']):
+                    terminated.append(proc.info['name'])
+        except:
+            continue
+            
+    if terminated:
+        print(f"[FGME-IA] Procesos eliminados: {', '.join(terminated)}")
+    else:
+        print("[FGME-IA] Estado estable: 0 amenazas")
+        
+    return terminated
+
+# Ciclo principal
+while True:
+    defense_cycle()
+    time.sleep(30)  # Escaneo cada 30 segundos</code>
+    </div>
+
+    <!-- Capa 3: Sistema Inmutable -->
+    <div class="panel">
+        <h3>CAPA 3: NÚCLEO INMUTABLE</h3>
+        <code># watchdog.py (Nuevo componente)
+import hashlib
+import os
+
+IMMUTABLE_FILES = {
+    "/sistema/core/fgme_kernel.dll": "a1b2c3d4...",
+    "/sistema/sec/ia_defensa.py": "f4e5d6e7..."
+}
+
+def verify_integrity():
+    alerts = []
+    for file_path, expected_hash in IMMUTABLE_FILES.items():
+        if os.path.exists(file_path):
+            with open(file_path, "rb") as f:
+                file_hash = hashlib.sha256(f.read()).hexdigest()
+            if file_hash != expected_hash:
+                alerts.append(f"ALERTA: {file_path} modificado!")
+        else:
+            alerts.append(f"CRÍTICO: {file_path} eliminado!")
+    return alerts</code>
+    </div>
+
+    <!-- Sistema de Respuesta Automática -->
+    <div class="panel">
+        <h3>RESPUESTA AUTOMÁTICA</h3>
+        <code># auto_response.py (Nuevo módulo)
+from datetime import datetime
+
+def generate_report(threats):
+    timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+    with open(f"/logs/defensa_{timestamp}.log", "w") as log:
+        log.write(f"Sistema FGME - Reporte de Seguridad\n")
+        log.write(f"Fecha: {timestamp}\n")
+        log.write(f"Amenazas neutralizadas: {len(threats)}\n")
+        if threats:
+            log.write("\nDetalles:\n")
+            for threat in threats:
+                log.write(f"- {threat}\n")
+    
+    if threats:
+        # Acciones de emergencia
+        os.system("fgme --lockdown-mode=maximum")
+        os.system("notify-admin --priority=critical")</code>
+    </div>
+
+    <script>
+        // Simulación del estado del sistema
+        const statusElement = document.getElementById('systemStatus');
+        const processes = [
+            "System", "fgme_defense.exe", "explorer.exe", 
+            "browser.exe", "cryptominer.exe", "ransomware.exe"
+        ];
+
+        setInterval(() => {
+            const activeThreats = Math.random() > 0.7 ? 
+                ['cryptominer.exe', 'ransomware.exe'] : [];
+            
+            if (activeThreats.length > 0) {
+                statusElement.innerHTML = `
+                    <span class="critical">! ALERTA CRÍTICA !</span><br>
+                    Procesos maliciosos detectados:<br>
+                    ${activeThreats.map(p => `• ${p}`).join('<br>')}<br>
+                    <button onclick="terminateProcesses()">EJECUTAR PURGA</button>
+                `;
+            } else {
+                statusElement.innerHTML = `
+                    <span class="status">ESTADO ESTABLE</span><br>
+                    Todos los procesos verificados<br>
+                    Último escaneo: ${new Date().toLocaleTimeString()}
+                `;
+            }
+        }, 5000);
+
+        function terminateProcesses() {
+            statusElement.innerHTML = '<span class="status">EJECUTANDO PURGA...</span>';
+            setTimeout(() => {
+                statusElement.innerHTML = `
+                    <span class="status">PURGA COMPLETADA</span><br>
+                    2 procesos maliciosos eliminados<br>
+                    Sistema asegurado
+                `;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
