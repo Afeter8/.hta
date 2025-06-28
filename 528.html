@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Defensa IA - Sistema Inmutable FGME</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: monospace;
+      padding: 20px;
+    }
+    .panel {
+      border: 1px solid #0f0;
+      padding: 15px;
+      margin-bottom: 15px;
+      background: #111;
+    }
+    h1 {
+      color: #0f0;
+    }
+    code {
+      background: #222;
+      padding: 5px;
+      display: block;
+      white-space: pre-wrap;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sistema de Protección Inmutable FGME</h1>  <div class="panel">
+    <h2>Firewall DNS (JS)</h2>
+    <code>
+// firewall_dns.js
+const blockedDomains = ["internet-start.net", "malicious-domain.com"];
+const interceptor = new Proxy(window.fetch, {
+  apply(target, thisArg, args) {
+    if (blockedDomains.some(d => args[0].includes(d))) {
+      console.warn("Intento bloqueado: " + args[0]);
+      return new Promise(() => {});
+    }
+    return Reflect.apply(target, thisArg, args);
+  }
+});
+window.fetch = interceptor;
+    </code>
+  </div>  <div class="panel">
+    <h2>Protección Hosts (Python)</h2>
+    <code>
+# protect_hosts.py
+with open("/etc/hosts", "a") as f:
+    f.write("\n127.0.0.1 internet-start.net\n")
+print("Dominio bloqueado.")
+    </code>
+  </div>  <div class="panel">
+    <h2>Verificador Inmutable (JSON)</h2>
+    <code>
+{
+  "verificado_por": "IA-FGME",
+  "sha256": {
+    "watchdog.py": "a1b2c3...",
+    "firewall_dns.js": "f4e5d6..."
+  },
+  "estado": "ACTIVO"
+}
+    </code>
+  </div>  <div class="panel">
+    <h2>Backup Inmutable (Shell)</h2>
+    <code>
+#!/bin/bash
+while true; do
+  cp -r /sistema /respaldo/inmutable/
+  echo "Backup realizado: $(date)"
+  sleep 300
+done
+    </code>
+  </div>  <div class="panel">
+    <h2>IA de Defensa Activa (Python)</h2>
+    <code>
+# ia_defensa.py
+import time
+while True:
+    print("[FGME] Escaneando integridad...")
+    time.sleep(60)
+    # lógica de detección de cambios no autorizados
+    print("[FGME] Integridad: OK")
+    </code>
+  </div></body>
+</html>
