@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FGME Secure Core - Defensa IA Autónoma</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #00ffd5;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      padding: 1rem;
+      text-align: center;
+      background-color: #111;
+      box-shadow: 0 0 10px #00ffd5;
+    }
+    .log {
+      padding: 1rem;
+      background: #1a1a1a;
+      max-height: 400px;
+      overflow-y: auto;
+      margin: 1rem;
+      border: 1px solid #00ffd5;
+    }
+    .alert {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🛡️ FGME Secure Core</h1>
+    <p>Defensa IA Autónoma — Sin intervención humana</p>
+  </header>  <main>
+    <section class="log" id="log">
+      <strong>Logs del sistema IA:</strong>
+      <pre id="output">Iniciando sistema IA de defensa...</pre>
+    </section>
+  </main>  <script>
+    const output = document.getElementById('output');
+
+    const ataques = [
+      { origen: 'Rusia', ip: '185.22.58.211', lenguaje: 'Python+C', tipo: 'Ransomware - WannaCry' },
+      { origen: 'China', ip: '45.83.88.144', lenguaje: 'Go', tipo: 'APT - Stuxnet modificado' },
+      { origen: 'Irán', ip: '91.240.118.230', lenguaje: 'PowerShell', tipo: 'Phishing - Charming Kitten' },
+      { origen: 'Nigeria', ip: '102.129.154.87', lenguaje: 'JS+PHP', tipo: 'Scam Web - 419 Fraud' },
+      { origen: 'Corea del Norte', ip: '175.45.176.1', lenguaje: 'C++', tipo: 'Ransomware - WannaCry' },
+      { origen: 'EE.UU.', ip: '34.210.115.0', lenguaje: 'Python', tipo: 'Spyware - Pegasus (mod)' },
+      { origen: 'Brasil', ip: '201.48.136.50', lenguaje: 'JS+SQL', tipo: 'Troyano Bancario - Banload' },
+      { origen: 'India', ip: '103.21.121.2', lenguaje: 'Python+Bash', tipo: 'Keylogger - Ghost RAT' },
+      { origen: 'Vietnam', ip: '203.113.132.1', lenguaje: 'C', tipo: 'Malware - DarkHotel' },
+      { origen: 'Turquía', ip: '95.0.0.1', lenguaje: 'PHP', tipo: 'Botnet - Mirai' },
+      { origen: 'Ucrania', ip: '91.210.129.1', lenguaje: 'Python', tipo: 'Malware - Petya/NotPetya' },
+      { origen: 'Reino Unido', ip: '51.140.0.0', lenguaje: 'C++', tipo: 'Rootkit - Rustock' },
+      { origen: 'Alemania', ip: '138.201.0.0', lenguaje: 'Go', tipo: 'Stealer - Raccoon' },
+      { origen: 'Francia', ip: '163.172.0.0', lenguaje: 'Python+JS', tipo: 'Spyware - FinFisher' },
+      { origen: 'España', ip: '81.45.0.0', lenguaje: 'Bash+Python', tipo: 'CryptoLocker' }
+    ];
+
+    let index = 0;
+    function simularDefensa() {
+      if (index >= ataques.length) index = 0;
+      const ataque = ataques[index++];
+      const log = `\n[ALERTA] 🚨 Ataque detectado desde ${ataque.origen} (${ataque.ip})\nLenguaje: ${ataque.lenguaje} | Tipo: ${ataque.tipo}\nAcción IA: IP bloqueada y reporte enviado a blockchain.`;
+      output.textContent += log;
+    }
+
+    setInterval(simularDefensa, 5000);
+  </script></body>
+</html>
